@@ -1,0 +1,21 @@
+server:
+  registerDefaultExceptionMappers: false
+  maxThreads: 20
+  applicationConnectors:
+    - type: http
+      port: 8688
+      acceptorThreads: 2
+      selectorThreads: 2
+  adminConnectors:
+    - type: http
+      port: 8689
+
+logging:
+  level: INFO
+
+collectorDb:
+  driverClass: com.mysql.jdbc.Driver
+  user:
+  password:
+  url:
+
