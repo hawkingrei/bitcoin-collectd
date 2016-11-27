@@ -1,5 +1,7 @@
 *.class
 
+target/*
+
 # BlueJ files
 *.ctxt
 
