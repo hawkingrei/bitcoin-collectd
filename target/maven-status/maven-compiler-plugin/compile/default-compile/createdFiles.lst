@@ -1,3 +1,4 @@
+com/suphawking/collector/core/socketio/huobitest.class
 com/suphawking/collector/core/websocket/WebSocketClientHandler.class
 com/suphawking/collector/quartz/Scheduled.class
 com/okcoin/websocket/WebSocketService.class
