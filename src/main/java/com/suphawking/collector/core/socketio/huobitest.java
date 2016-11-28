@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class huobitest {
   public static void main(String[] args0) throws Exception {
-    IO.Options opts = new IO.Options();
+    //IO.Options opts = new IO.Options();
     //opts.reconnection = true;
 
     //final Socket socket = IO.socket("hq.huobi.com:80",opts);
