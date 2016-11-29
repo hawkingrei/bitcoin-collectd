@@ -1,45 +1,86 @@
 package com.suphawking.collector.core.socketio;
 
+
+import com.alibaba.fastjson.JSONObject;
+import com.google.gson.JsonElement;
+
+import io.socket.IOAcknowledge;
+import io.socket.IOCallback;
+import io.socket.SocketIO;
+import io.socket.SocketIOException;
+
 import lombok.extern.slf4j.Slf4j;
+
+import java.net.URI;
+import java.security.NoSuchAlgorithmException;
+
+import javax.net.ssl.SSLContext;
 
 /**
  * Created by loveknut on 2016/11/27.
  */
 @Slf4j
-public class huobitest {
-  public static void main(String[] args0) throws Exception {
-    //IO.Options opts = new IO.Options();
-    //opts.reconnection = true;
-
-    //final Socket socket = IO.socket("hq.huobi.com:80",opts);
-    //String strMsg = "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-    //   +                  "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+public class huobitest{
 
 
-    //socket.on(Socket.EVENT_CONNECT,new Emitter.Listener() {
-    //  @Override
-    //  public void call(Object... args) {
-    //    log.info("Connected.");
-    //    //JSONObject obj = (JSONObject)args[0];
-    //  }});
+  private SocketIO socket;
 
+  /**
+   * @param args
+   */
+  public static void main(String[] args) throws Exception {
 
-    //socket.on("message", args -> log.info("message: {}", args[0]));
-    //socket.connect();
+    URI url =new URI("http://hq.huobi.com:80");
+    String strMsg = "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+         +                  "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    try {
+      SocketIO.setDefaultSSLSocketFactory(SSLContext.getDefault());
+    } catch (NoSuchAlgorithmException e) {
+      throw new RuntimeException(e);
+    }
+    SocketIO socket = new SocketIO();
+    socket.connect(url.toURL(),new IOCallback() {
+      @Override
+      public void onError(SocketIOException socketIOException) {
+        System.out.print("error");
+      }
+
+      @Override
+      public void onDisconnect() {
+        System.out.print("disconnect");
+      }
+
+      @Override
+      public void onConnect() {
+        System.out.print("ok");
+      }
+
+      @Override
+      public void onMessage(String s, IOAcknowledge ioAcknowledge) {
+
+      }
+
+      @Override
+      public void onMessage(JsonElement jsonElement, IOAcknowledge ioAcknowledge) {
+
+      }
+
+      @Override
+      public void on(String s, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
+
+      }
+
+    });
+    JSONObject sendJO = new JSONObject().parseObject(strMsg);
+
+    socket.emit("request", sendJO.toJSONString());
+
+    // This line is cached until the connection is establisched.
+
   }
-}
-//@Slf4j
-//class JsonLogger implements Emitter.Listener {
-//
-//  private String prefix;
-//
-// public JsonLogger(String prefix) {
-//   this.prefix = prefix;
-//  }
 
-//  @Override
-//  public void call(Object... args) {
-//    JSONObject json = (JSONObject) args[0];
-//    log.info("{}: {}",prefix, json);
-//  }
-//}
+
+
+
+
+}
