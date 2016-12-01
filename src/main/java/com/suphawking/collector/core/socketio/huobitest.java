@@ -57,17 +57,18 @@ public class huobitest{
 
       @Override
       public void onMessage(String s, IOAcknowledge ioAcknowledge) {
-
+        System.out.println(s);
       }
 
       @Override
       public void onMessage(JsonElement jsonElement, IOAcknowledge ioAcknowledge) {
-
+        System.out.print(jsonElement.toString());
       }
 
       @Override
       public void on(String s, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
-
+        //System.out.println(s.toString());
+        System.out.println(jsonElements.toString());
       }
 
     });
