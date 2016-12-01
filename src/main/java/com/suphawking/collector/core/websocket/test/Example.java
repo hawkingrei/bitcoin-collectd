@@ -4,7 +4,7 @@ package com.suphawking.collector.core.websocket.test;
  * Created by loveknut on 2016/11/17.
  */
 
-import com.suphawking.collector.core.domain.websocket.websocketSource;
+import com.suphawking.collector.core.domain.websocket.WebsocketSource;
 import com.suphawking.collector.core.websocket.WebSocketService;
 
 public class Example {
@@ -20,13 +20,13 @@ public class Example {
 
     apiKey = "";
     secretKey = "";
-    websocketSource s = new websocketSource();
-    s.setName("okcoin");
+    WebsocketSource clientsource = new WebsocketSource();
+    clientsource.setName("okcoin");
     //s.setUrl(huobiUrl);
-    s.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
+    clientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
     // 国际站WebSocket地址 注意如果访问国内站 请将 real.okcoin.com 改为 real.
     WebSocketService service = new BuissnesWebSocketServiceImpl();
-    WebSoketClient client = new WebSoketClient(s, service);
+    WebSoketClient client = new WebSoketClient(clientsource, service);
     client.run();
 
     //client.sendMessage(strMsg);

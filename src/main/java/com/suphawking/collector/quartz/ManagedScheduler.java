@@ -2,7 +2,7 @@ package com.suphawking.collector.quartz;
 
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.suphawking.collector.quartz.job.collectJob;
+import com.suphawking.collector.quartz.job.CollectJob;
 
 import io.dropwizard.lifecycle.Managed;
 
@@ -42,7 +42,7 @@ public class ManagedScheduler implements Managed {
   public void start() throws Exception {
     scheduler.setJobFactory(guiceJobFactory);
     scheduler.start();
-    scheduleJob(injector.getInstance(collectJob.class));
+    scheduleJob(injector.getInstance(CollectJob.class));
   }
 
   void scheduleJob(Job job) throws SchedulerException {

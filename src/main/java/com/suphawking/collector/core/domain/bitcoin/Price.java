@@ -12,7 +12,7 @@ import java.util.Date;
  */
 @Data
 @NoArgsConstructor
-public class price implements Serializable {
+public class Price implements Serializable {
   private BigDecimal price;
   private String sedId;
   private Date time;

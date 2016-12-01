@@ -15,11 +15,12 @@ import org.skife.jdbi.v2.DBI;
  * Created by loveknut on 2016/11/1.
  */
 @Slf4j
-public class JdbiModule extends CollectdModule{
-  public JdbiModule(AppCfg cfg, Environment env){
+public class JdbiModule extends CollectdModule {
+  public JdbiModule(AppCfg cfg, Environment env) {
     super(cfg, env);
     initJdbi();
   }
+
   private void initJdbi() {
     log.info("init jdbi");
     Preconditions.checkNotNull(cfg);

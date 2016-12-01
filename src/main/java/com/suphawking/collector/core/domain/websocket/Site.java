@@ -5,14 +5,15 @@ import com.alibaba.fastjson.annotation.JSONCreator;
 /**
  * Created by loveknut on 2016/11/18.
  */
+
 public enum Site {
   OKCOIN("OKCOIN"),
   UNKNOWN("UNKOWN");
 
   public final String value;
 
-  Site(String value){
-    this.value=value;
+  Site(String value) {
+    this.value = value;
   }
 
   @JSONCreator

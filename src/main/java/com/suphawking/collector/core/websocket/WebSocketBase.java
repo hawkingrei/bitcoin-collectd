@@ -1,7 +1,7 @@
 package com.suphawking.collector.core.websocket;
 
 import com.google.common.base.Preconditions;
-import com.suphawking.collector.core.domain.websocket.websocketSource;
+import com.suphawking.collector.core.domain.websocket.WebsocketSource;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
@@ -29,7 +29,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.Timer;
-import java.util.TimerTask;
 
 
 /**
@@ -44,14 +43,14 @@ public abstract class WebSocketBase {
   private EventLoopGroup group = null;
   private Bootstrap bootstrap = null;
   private Channel channel = null;
-  private websocketSource source = null;
+  private WebsocketSource source = null;
   private ChannelFuture future = null;
   private boolean isAlive = false;
-  /** 国内站siteFlag=0,国际站siteFlag=1 */
+  // 国内站siteFlag=0,国际站siteFlag=1
   private int siteFlag = 0;
   private Set<String> subscribChannel = new HashSet<String>();
 
-  public WebSocketBase(websocketSource source, WebSocketService serivce) {
+  public WebSocketBase(WebsocketSource source, WebSocketService serivce) {
     this.source = source;
     this.service = serivce;
   }
@@ -113,12 +112,12 @@ public abstract class WebSocketBase {
           .channel(NioSocketChannel.class)
           .handler(new ChannelInitializer<SocketChannel>() {
             protected void initChannel(SocketChannel ch) {
-              ChannelPipeline p = ch.pipeline();
+              ChannelPipeline pipeline = ch.pipeline();
               if (sslCtx != null) {
-                p.addLast(sslCtx.newHandler(ch.alloc(),
+                pipeline.addLast(sslCtx.newHandler(ch.alloc(),
                     uri.getHost(), uri.getPort()));
               }
-              p.addLast(new HttpClientCodec(),
+              pipeline.addLast(new HttpClientCodec(),
                   new HttpObjectAggregator(8192), handler);
             }
           });
@@ -178,30 +177,4 @@ public abstract class WebSocketBase {
 
 }
 
-class MoniterTask extends TimerTask {
 
-  private long startTime = System.currentTimeMillis();
-  private int checkTime = 5000;
-  private WebSocketBase client = null;
-
-  public void updateTime() {
-    // log.info("startTime is update");
-    startTime = System.currentTimeMillis();
-  }
-
-  public MoniterTask(WebSocketBase client) {
-    this.client = client;
-    // log.info("TimerTask is starting.... ");
-  }
-
-  public void run() {
-    if (System.currentTimeMillis() - startTime > checkTime) {
-      client.setStatus(false);
-      // log.info("Moniter reconnect....... ");
-      client.reConnect();
-    }
-    client.sentPing();
-    // log.info("Moniter ping data sent.... ");
-  }
-
-}

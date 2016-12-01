@@ -32,7 +32,9 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
   private ChannelPromise handshakeFuture;
   private MoniterTask moniter;
   private WebSocketService service ;
-  public WebSocketClientHandler(WebSocketClientHandshaker handshaker,WebSocketService service,MoniterTask moniter) {
+
+  public WebSocketClientHandler(WebSocketClientHandshaker handshaker,
+      WebSocketService service,MoniterTask moniter) {
     this.handshaker = handshaker;
     this.service = service;
     this.moniter = moniter;
@@ -72,8 +74,8 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     if (msg instanceof FullHttpResponse) {
       FullHttpResponse response = (FullHttpResponse) msg;
       throw new IllegalStateException(
-          "Unexpected FullHttpResponse (getStatus=" + response.getStatus() +
-              ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')');
+          "Unexpected FullHttpResponse (getStatus=" + response.getStatus()
+             + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')');
     }
 
     WebSocketFrame frame = (WebSocketFrame) msg;
@@ -81,9 +83,9 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
       TextWebSocketFrame textFrame = (TextWebSocketFrame) frame;
       service.onReceive(textFrame.text());
     } else if (frame instanceof BinaryWebSocketFrame) {
-      BinaryWebSocketFrame binaryFrame=(BinaryWebSocketFrame)frame;
+      BinaryWebSocketFrame binaryFrame = (BinaryWebSocketFrame)frame;
       service.onReceive(decodeByteBuff(binaryFrame.content()));
-    }else if (frame instanceof PongWebSocketFrame) {
+    } else if (frame instanceof PongWebSocketFrame) {
       System.out.println("WebSocket Client received pong");
     } else if (frame instanceof CloseWebSocketFrame) {
       System.out.println("WebSocket Client received closing");
@@ -99,6 +101,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     }
     ctx.close();
   }
+
   public  String decodeByteBuff(ByteBuf buf) throws IOException, DataFormatException {
 
     byte[] temp = new byte[buf.readableBytes()];

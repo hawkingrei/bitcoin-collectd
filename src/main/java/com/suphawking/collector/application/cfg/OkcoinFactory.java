@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * Created by loveknut on 2016/11/1.
  */
 @Data
-public class okcoinFactory {
+public class OkcoinFactory {
   @NotEmpty
   private String apiKey;
   @NotEmpty

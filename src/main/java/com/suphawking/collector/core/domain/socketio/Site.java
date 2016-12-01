@@ -12,8 +12,8 @@ public enum Site {
 
   public final String value;
 
-  Site(String value){
-    this.value=value;
+  Site(String value) {
+    this.value = value;
   }
 
   @JSONCreator

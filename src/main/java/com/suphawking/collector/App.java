@@ -52,10 +52,10 @@ public class App extends Application<AppCfg> {
   @Override
   public void run(AppCfg cfg, Environment env) throws Exception {
     Injector injector = Guice.createInjector(
-          new RootModule(cfg, env),
-          new QuartzModule(cfg, env),
-          new JdbiModule(cfg, env)
-        );
+        new RootModule(cfg, env),
+        new QuartzModule(cfg, env),
+        new JdbiModule(cfg, env)
+    );
 
     env.jersey().register(new LoggingExceptionMapper<Throwable>() {
     });

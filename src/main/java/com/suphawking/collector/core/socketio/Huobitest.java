@@ -20,19 +20,21 @@ import javax.net.ssl.SSLContext;
  * Created by loveknut on 2016/11/27.
  */
 @Slf4j
-public class huobitest{
+public class Huobitest {
 
 
   private SocketIO socket;
 
   /**
    * @param args
+   * TEST
    */
   public static void main(String[] args) throws Exception {
 
-    URI url =new URI("http://hq.huobi.com:80");
-    String strMsg = "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-         +                  "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    URI url = new URI("http://hq.huobi.com:80");
+    String strMsg =
+        "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+         + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
     try {
       SocketIO.setDefaultSSLSocketFactory(SSLContext.getDefault());
     } catch (NoSuchAlgorithmException e) {
@@ -56,8 +58,8 @@ public class huobitest{
       }
 
       @Override
-      public void onMessage(String s, IOAcknowledge ioAcknowledge) {
-        System.out.println(s);
+      public void onMessage(String message, IOAcknowledge ioAcknowledge) {
+        System.out.println(message);
       }
 
       @Override
@@ -66,7 +68,7 @@ public class huobitest{
       }
 
       @Override
-      public void on(String s, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
+      public void on(String message, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
         //System.out.println(s.toString());
         System.out.println(jsonElements.toString());
       }

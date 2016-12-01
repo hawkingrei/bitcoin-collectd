@@ -18,13 +18,13 @@ import java.util.concurrent.TimeUnit;
 @Scheduled(interval = 1, unit = TimeUnit.SECONDS)
 @Slf4j
 @SuppressWarnings("unchecked")
-public class collectJob implements Job {
+public class CollectJob implements Job {
 
   private final Injector injector;
 
 
   @Inject
-  public collectJob( Injector injector) {
+  public CollectJob( Injector injector) {
     this.injector = injector;
   }
 
