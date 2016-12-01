@@ -16,4 +16,5 @@ public class Price implements Serializable {
   private BigDecimal price;
   private String sedId;
   private Date time;
+  private String source;
 }
