@@ -1,5 +1,5 @@
 *.class
-
+configure.yaml
 target/*
 
 # BlueJ files
