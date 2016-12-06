@@ -42,7 +42,7 @@
     </build>
     <properties>
         <fastjson.version>1.2.21</fastjson.version>
-        <dropwizard.version>1.0.4</dropwizard.version>
+        <dropwizard.version>1.1.0-SNAPSHOT</dropwizard.version>
         <quartz.version>2.2.1</quartz.version>
         <slf4j.version>1.7.21</slf4j.version>
         <guava.version>20.0</guava.version>
@@ -51,7 +51,6 @@
         <jetty.version>9.3.13.v20161014</jetty.version>
         <mysql.version>5.1.40</mysql.version>
         <netty.version>4.1.6.Final</netty.version>
-        <xchange.version>4.1.0</xchange.version>
     </properties>
     <dependencies>
         <dependency>
@@ -68,11 +67,6 @@
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>3.4.2</version>
-        </dependency>
-        <dependency>
-            <groupId>org.knowm.xchange</groupId>
-            <artifactId>xchange-core</artifactId>
-            <version>${xchange.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -195,6 +189,12 @@
             <id>keytwo.net</id>
             <name>Keytwo.net Repository</name>
             <url>http://audiobox.keytwo.net</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
         </repository>
     </repositories>
 </project>
