@@ -3,6 +3,7 @@ package com.suphawking.collector.core.domain.data.huobi;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -10,8 +11,15 @@ import java.math.BigDecimal;
  */
 @Data
 @NoArgsConstructor
-public class SubSpotcnyBtcTicker {
-  BigDecimal high;
+public class SubSpotcnyBtcTicker implements Serializable {
+  private BigDecimal high;
+  private String vol;
+  private String last;
+  private BigDecimal low;
+  private BigDecimal buy;
+  private BigDecimal sell;
+  private String timestamp;
+
 
 
 }

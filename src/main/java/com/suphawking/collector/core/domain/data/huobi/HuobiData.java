@@ -1,7 +1,9 @@
 package com.suphawking.collector.core.domain.data.huobi;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -14,6 +16,8 @@ import javax.validation.constraints.NotNull;
  * Created by loveknut on 2016/12/10.
  */
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 public class HuobiData implements Serializable {
 
