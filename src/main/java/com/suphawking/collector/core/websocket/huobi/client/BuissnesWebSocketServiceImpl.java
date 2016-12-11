@@ -1,9 +1,9 @@
-package com.suphawking.collector.core.websocket.client.huobi;
+package com.suphawking.collector.core.websocket.huobi.client;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.suphawking.collector.core.domain.data.huobi.SubSpotcnyBtcTicker;
-import com.suphawking.collector.core.websocket.WebSocketService;
+import com.suphawking.collector.core.websocket.huobi.WebSocketService;
 
 import lombok.extern.slf4j.Slf4j;
 

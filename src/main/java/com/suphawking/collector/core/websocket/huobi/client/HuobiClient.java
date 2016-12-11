@@ -1,11 +1,11 @@
-package com.suphawking.collector.core.websocket.client.huobi;
+package com.suphawking.collector.core.websocket.huobi.client;
 
 /**
  * Created by loveknut on 2016/11/17.
  */
 
 import com.suphawking.collector.core.domain.websocket.WebsocketSource;
-import com.suphawking.collector.core.websocket.WebSocketService;
+import com.suphawking.collector.core.websocket.huobi.WebSocketService;
 
 public class HuobiClient {
   private static final String ENDPOINT = "http://hq.huobi.com:80/socket.io/1/";

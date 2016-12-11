@@ -1,4 +1,4 @@
-package com.suphawking.collector.core.websocket;
+package com.suphawking.collector.core.websocket.huobi;
 
 import com.google.common.base.Preconditions;
 import com.suphawking.collector.core.domain.websocket.WebsocketSource;
@@ -50,9 +50,9 @@ public abstract class WebSocketBase {
   private int siteFlag = 0;
   private Set<String> subscribChannel = new HashSet<String>();
 
-  public WebSocketBase(WebsocketSource source, WebSocketService serivce) {
+  public WebSocketBase(WebsocketSource source, WebSocketService service) {
     this.source = source;
-    this.service = serivce;
+    this.service = service;
   }
 
   public void run() {

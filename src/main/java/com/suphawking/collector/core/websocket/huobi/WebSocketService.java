@@ -1,4 +1,4 @@
-package com.suphawking.collector.core.websocket;
+package com.suphawking.collector.core.websocket.huobi;
 
 /**
  * Created by loveknut on 2016/11/15.

@@ -1,4 +1,4 @@
-package com.suphawking.collector.core.websocket;
+package com.suphawking.collector.core.websocket.huobi;
 
 import java.util.TimerTask;
 
