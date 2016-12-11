@@ -41,7 +41,7 @@
         </plugins>
     </build>
     <properties>
-        <fastjson.version>1.2.21</fastjson.version>
+        <fastjson.version>1.2.22</fastjson.version>
         <dropwizard.version>1.0.5</dropwizard.version>
         <quartz.version>2.2.1</quartz.version>
         <slf4j.version>1.7.21</slf4j.version>
