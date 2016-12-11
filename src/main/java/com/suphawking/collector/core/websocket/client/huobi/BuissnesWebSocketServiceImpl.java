@@ -2,7 +2,6 @@ package com.suphawking.collector.core.websocket.client.huobi;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
 import com.suphawking.collector.core.domain.data.huobi.SubSpotcnyBtcTicker;
 import com.suphawking.collector.core.websocket.WebSocketService;
 
@@ -23,9 +22,10 @@ public class BuissnesWebSocketServiceImpl implements WebSocketService {
     log.info("WebSocket Client received message: " + msg);
     if (!msg.equals(pong)) {
       List<HashMap> data =  JSONArray.parseArray(msg, HashMap.class);
-      if (data.get(0).get("data") != null ){
-        SubSpotcnyBtcTicker b = JSON.parseObject(data.get(0).get("data").toString(),SubSpotcnyBtcTicker.class);
-        System.out.println(b.getBuy());
+      if (data.get(0).get("data") != null ) {
+        SubSpotcnyBtcTicker tickerData = JSON.parseObject(data.get(0).get("data").toString(),
+            SubSpotcnyBtcTicker.class);
+        System.out.println(tickerData.getBuy());
       }
     }
   }
