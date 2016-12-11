@@ -6,8 +6,10 @@
     <groupId>bitcoin-collection</groupId>
     <artifactId>suphawking</artifactId>
     <version>1.0-SNAPSHOT</version>
-
-
+    <modules>
+        <module>collectd-plugin</module>
+    </modules>
+    <packaging>pom</packaging>
     <build>
         <plugins>
             <plugin>
@@ -15,7 +17,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>2.17</version>
                 <configuration>
-                    <configLocation>src/main/resources/google_check_style.xml
+                    <configLocation>collectd-main/main/resources/google_check_style.xml
                     </configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
