@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="6.11.2">
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/client/BusinessWebSocketServiceImpl.java">
+</file>
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/client/HuobiClient.java">
+</file>
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/client/WebSocketClient.java">
+</file>
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/MoniterTask.java">
+</file>
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/WebSocketBase.java">
+</file>
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/WebSocketClientHandler.java">
+</file>
+<file name="/Users/loveknut/mysearch/bitcoin-collectd/collectd-okcoin/src/main/java/com/suphawking/collectd/okcoin/WebSocketService.java">
+</file>
+</checkstyle>

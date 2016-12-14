@@ -1,2 +1,2 @@
-com/suphawking/ws_client.class
-com/suphawking/ws_client$JsonLogger.class
+com/suphawking/btcc/WsClient$JsonLogger.class
+com/suphawking/btcc/WsClient.class

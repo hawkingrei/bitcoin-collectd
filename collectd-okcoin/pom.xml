@@ -3,14 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <groupId>com.suphawking.collectd</groupId>
         <artifactId>collectd-root</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <artifactId>collectd-okcoin</artifactId>
+    <groupId>com.suphawking.collectd</groupId>
 
-    <artifactId>collectd-btcc</artifactId>
+
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
@@ -27,15 +28,21 @@
     </build>
     <properties>
         <socket.io-client.version>0.7.0</socket.io-client.version>
-
+        <netty.version>4.1.6.Final</netty.version>
         <slf4j.version>1.7.21</slf4j.version>
+        <fastjson.version>1.2.22</fastjson.version>
+        <guava.version>20.0</guava.version>
     </properties>
     <dependencies>
-
         <dependency>
-            <groupId>io.socket</groupId>
-            <artifactId>socket.io-client</artifactId>
-            <version>${socket.io-client.version}</version>
+            <groupId>com.suphawking.collectd</groupId>
+            <artifactId>collectd-main</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-all</artifactId>
+            <version>${netty.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -46,6 +53,16 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.16.10</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 </project>
