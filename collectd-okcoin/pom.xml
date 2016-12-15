@@ -27,11 +27,7 @@
         </plugins>
     </build>
     <properties>
-        <socket.io-client.version>0.7.0</socket.io-client.version>
         <netty.version>4.1.6.Final</netty.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <fastjson.version>1.2.22</fastjson.version>
-        <guava.version>20.0</guava.version>
     </properties>
     <dependencies>
         <dependency>
@@ -43,26 +39,6 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>${netty.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.16.10</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${guava.version}</version>
         </dependency>
     </dependencies>
 </project>
