@@ -24,7 +24,15 @@
             </plugin>
         </plugins>
     </build>
+    <properties>
+        <socket.io-client.version>0.7.0</socket.io-client.version>
+    </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.socket</groupId>
+            <artifactId>socket.io-client</artifactId>
+            <version>${socket.io-client.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
