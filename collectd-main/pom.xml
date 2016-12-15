@@ -25,7 +25,7 @@
         </plugins>
     </build>
     <properties>
-        <socket.io-client.version>0.7.0</socket.io-client.version>
+        <socket.io-client.version>0.2.1</socket.io-client.version>
     </properties>
     <dependencies>
         <dependency>
@@ -50,4 +50,17 @@
             </exclusions>
         </dependency>
     </dependencies>
+    <repositories>
+        <repository>
+            <id>keytwo.net</id>
+            <name>Keytwo.net Repository</name>
+            <url>http://audiobox.keytwo.net</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
