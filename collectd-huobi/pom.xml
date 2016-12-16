@@ -1,16 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.suphawking.collectd</groupId>
-    <artifactId>collectd-main</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <parent>
         <groupId>com.suphawking.collectd</groupId>
         <artifactId>collectd-root</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <artifactId>collectd-huobi</artifactId>
+    <groupId>com.suphawking.collectd</groupId>
 
+
+    <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
@@ -28,23 +30,33 @@
         <socket.io-client.version>0.2.1</socket.io-client.version>
     </properties>
     <dependencies>
-
+        <dependency>
+            <groupId>com.suphawking.collectd</groupId>
+            <artifactId>collectd-main</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>io.socket</groupId>
+            <artifactId>socket.io-client</artifactId>
+            <version>${socket.io-client.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>2.8.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
-            <version>${quartz.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>keytwo.net</id>
+            <name>Keytwo.net Repository</name>
+            <url>http://audiobox.keytwo.net</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>

@@ -27,9 +27,10 @@
         </dependencies>
     </dependencyManagement>
     <modules>
-        <module>./collectd-main</module>
-        <module>./collectd-btcc</module>
-        <module>./collectd-okcoin</module>
+        <module>collectd-main</module>
+        <module>collectd-btcc</module>
+        <module>collectd-okcoin</module>
+        <module>collectd-huobi</module>
     </modules>
     <packaging>pom</packaging>
     <build>

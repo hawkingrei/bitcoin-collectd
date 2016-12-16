@@ -1,4 +1,4 @@
-package com.suphawking.collectd.core.socketio;
+package com.suphawking.collectd.okcoin;
 
 
 import com.alibaba.fastjson.JSONObject;
@@ -15,12 +15,10 @@ import java.net.URI;
 import java.security.NoSuchAlgorithmException;
 
 import javax.net.ssl.SSLContext;
-
 /**
- * Created by loveknut on 2016/11/27.
+ * Created by loveknut on 2016/12/1.
  */
-@Slf4j
-public class Huobitest {
+class HuobiClient {
 
 
   private SocketIO socket;
@@ -34,7 +32,7 @@ public class Huobitest {
     URI url = new URI("http://hq.huobi.com:80");
     String strMsg =
         "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-         + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
     try {
       SocketIO.setDefaultSSLSocketFactory(SSLContext.getDefault());
     } catch (NoSuchAlgorithmException e) {
@@ -81,9 +79,5 @@ public class Huobitest {
     // This line is cached until the connection is establisched.
 
   }
-
-
-
-
 
 }
