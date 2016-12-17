@@ -19,8 +19,5 @@ public class clientTest {
     HuobiClient client = new HuobiClient(clientsource);
     client.start();
     client.stop();
-
-
-
   }
 }
