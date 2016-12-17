@@ -90,6 +90,10 @@ public abstract class WebSocketBase {
     subscribChannel.remove(channel);
   }
 
+  public void stop() {
+    group.shutdownGracefully();
+    this.setStatus(false);
+  }
 
   private void connect() {
     try {

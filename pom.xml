@@ -75,6 +75,7 @@
         <dropwizard.version>1.0.5</dropwizard.version>
         <quartz.version>2.2.1</quartz.version>
         <mysql.version>5.1.40</mysql.version>
+        <junit.version>4.11</junit.version>
     </properties>
     <dependencies>
         <dependency>
@@ -175,6 +176,12 @@
                     <artifactId>slf4j-api</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>

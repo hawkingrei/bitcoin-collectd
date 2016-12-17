@@ -16,6 +16,9 @@ import java.util.List;
 @Slf4j
 public class BusinessWebSocketServiceImpl implements WebSocketService {
 
+
+
+
   public String pong = "{\"event\":\"pong\"}";
 
   public void onReceive(String msg) {
