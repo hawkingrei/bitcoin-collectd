@@ -21,6 +21,11 @@ public class BusinessWebSocketServiceImpl implements WebSocketService {
 
   public String pong = "{\"event\":\"pong\"}";
 
+
+  public BusinessWebSocketServiceImpl() {
+
+  }
+
   public void onReceive(String msg) {
     log.info("WebSocket Client received message: " + msg);
     if (!msg.equals(pong)) {

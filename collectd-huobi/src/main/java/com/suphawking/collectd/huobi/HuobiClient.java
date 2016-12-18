@@ -1,4 +1,4 @@
-package com.suphawking.collectd.okcoin;
+package com.suphawking.collectd.huobi;
 
 
 import com.alibaba.fastjson.JSONObject;
@@ -9,8 +9,6 @@ import io.socket.IOCallback;
 import io.socket.SocketIO;
 import io.socket.SocketIOException;
 
-import lombok.extern.slf4j.Slf4j;
-
 import java.net.URI;
 import java.security.NoSuchAlgorithmException;
 
@@ -18,6 +16,7 @@ import javax.net.ssl.SSLContext;
 /**
  * Created by loveknut on 2016/12/1.
  */
+
 class HuobiClient {
 
 
@@ -62,13 +61,20 @@ class HuobiClient {
 
       @Override
       public void onMessage(JsonElement jsonElement, IOAcknowledge ioAcknowledge) {
-        System.out.print(jsonElement.toString());
+        //System.out.print(jsonElement.toString());
+
       }
 
       @Override
       public void on(String message, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
+        JsonElement jsonElement = jsonElements[0];
+        System.out.print(jsonElement.toString());
+        //List<HashMap> data =  JSONArray.parseArray(stringmassage, HashMap.class);
+        //System.out.println(data.get(0).get("payload"));
         //System.out.println(s.toString());
-        System.out.println(jsonElements.toString());
+        //System.out.println(jsonElements);
+        //JSONObject result = new JSONObject.parseObject(message);
+        //result.getJSONObject("payload");
       }
 
     });
