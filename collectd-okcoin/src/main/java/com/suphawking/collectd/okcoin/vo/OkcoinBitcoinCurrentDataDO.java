@@ -1,4 +1,4 @@
-package com.suphawking.collectd.okcoin.data;
+package com.suphawking.collectd.okcoin.vo;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,12 +10,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Created by loveknut on 2016/12/17.
+ * Created by loveknut on 2017/1/6.
  */
 @Data
 @NoArgsConstructor
-public class OkcoinBitcoinCurrentData implements Serializable {
-  private static final long serialVersionUID = -3277249735837083741L;
+public class OkcoinBitcoinCurrentDataDO implements Serializable {
+
 
   private BigDecimal high;
   private String vol;
@@ -25,8 +25,8 @@ public class OkcoinBitcoinCurrentData implements Serializable {
   private BigDecimal sell;
   private String timestamp;
 
-  @Override
   public String toString() {
     return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
   }
+
 }

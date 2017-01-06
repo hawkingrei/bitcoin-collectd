@@ -7,7 +7,7 @@ import com.suphawking.collectd.okcoin.data.OkcoinBitcoinCurrentData;
  */
 public class OkcoinTrendDataRepo {
 
-  public void okcoinCurrentDataMapper(OkcoinBitcoinCurrentData data) {
+  public void okcoinCurrentDataRepo(OkcoinBitcoinCurrentData data) {
     data.getBuy();
     data.getHigh();
     data.getLast();
@@ -16,4 +16,6 @@ public class OkcoinTrendDataRepo {
     data.getSell();
     data.getTimestamp();
   }
+
+
 }

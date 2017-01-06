@@ -1,7 +1,7 @@
 package com.suphawking.collectd.okcoin.mapper;
 
 import com.suphawking.collectd.jdbi.mapper.AutoMapper;
-import com.suphawking.collectd.okcoin.dao.SaveOkcoinTrendData;
+import com.suphawking.collectd.okcoin.vo.OkcoinBitcoinCurrentDataDO;
 
 import org.skife.jdbi.v2.StatementContext;
 
@@ -10,9 +10,9 @@ import java.sql.ResultSet;
 /**
  * Created by loveknut on 2017/1/6.
  */
-public class OkcoinTrendDataMapper extends AutoMapper<SaveOkcoinTrendData> {
+public class OkcoinTrendDataMapper extends AutoMapper<OkcoinBitcoinCurrentDataDO> {
   @Override
-  protected SaveOkcoinTrendData customMap(SaveOkcoinTrendData result, int idx,
+  protected OkcoinBitcoinCurrentDataDO customMap(OkcoinBitcoinCurrentDataDO result, int idx,
       ResultSet rs, StatementContext ctx) {
     return result;
   }

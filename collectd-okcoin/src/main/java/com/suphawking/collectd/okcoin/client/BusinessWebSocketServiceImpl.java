@@ -22,9 +22,7 @@ public class BusinessWebSocketServiceImpl implements WebSocketService {
   public String pong = "{\"event\":\"pong\"}";
 
 
-  public BusinessWebSocketServiceImpl(
-
-  ) {
+  public BusinessWebSocketServiceImpl() {
 
   }
 

@@ -34,6 +34,7 @@ import java.util.Timer;
 /**
  * Created by loveknut on 2016/11/15.
  */
+
 @Slf4j
 public abstract class WebSocketBase {
 
