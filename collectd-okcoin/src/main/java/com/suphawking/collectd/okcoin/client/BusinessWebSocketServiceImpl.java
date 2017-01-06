@@ -22,7 +22,9 @@ public class BusinessWebSocketServiceImpl implements WebSocketService {
   public String pong = "{\"event\":\"pong\"}";
 
 
-  public BusinessWebSocketServiceImpl() {
+  public BusinessWebSocketServiceImpl(
+
+  ) {
 
   }
 
@@ -33,7 +35,8 @@ public class BusinessWebSocketServiceImpl implements WebSocketService {
       if (data.get(0).get("data") != null ) {
         SubSpotcnyBtcTicker tickerData = JSON.parseObject(data.get(0).get("data").toString(),
             SubSpotcnyBtcTicker.class);
-        System.out.println(tickerData.getBuy());
+
+        log.info(tickerData.getBuy().toString());
       }
     }
   }
