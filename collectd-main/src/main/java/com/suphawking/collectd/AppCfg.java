@@ -21,5 +21,4 @@ public class AppCfg extends Configuration {
   @JsonProperty("collectorDb")
   private DataSourceFactory collectorDbFactory = new DataSourceFactory();
 
-
 }
