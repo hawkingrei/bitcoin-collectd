@@ -2,5 +2,5 @@ machine:
   java:
     version: oraclejdk8
 test:
-  post:
+  override:
     - mvn test
