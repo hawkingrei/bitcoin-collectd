@@ -1,4 +1,4 @@
-package com.suphawking.collectd.core.domain.data.huobi;
+package com.suphawking.collectd.spi.domain.data.huobi;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

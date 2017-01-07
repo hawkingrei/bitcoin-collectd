@@ -1,4 +1,4 @@
-package com.suphawking.collectd.core.domain.socketio;
+package com.suphawking.collectd.spi.domain.socketio;
 
 import lombok.Data;
 

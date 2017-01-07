@@ -1,11 +1,11 @@
-package com.suphawking.collectd.core.domain.websocket;
+package com.suphawking.collectd.spi.websocket;
 
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by loveknut on 2016/11/15.
+ * Created by loveknut on 2017/1/7.
  */
 @Data
 public class WebsocketSource {

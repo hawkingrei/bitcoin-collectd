@@ -1,7 +1,7 @@
 package com.suphawking.collectd.okcoin;
 
 import com.google.common.base.Preconditions;
-import com.suphawking.collectd.core.domain.websocket.WebsocketSource;
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;

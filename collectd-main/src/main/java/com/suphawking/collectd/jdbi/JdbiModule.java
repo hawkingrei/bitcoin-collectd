@@ -10,7 +10,6 @@ import com.suphawking.collectd.okcoin.repo.OkcoinTrendDataRepo;
 import io.dropwizard.jdbi.DBIFactory;
 import io.dropwizard.setup.Environment;
 
-import lombok.Singular;
 import lombok.extern.slf4j.Slf4j;
 
 import org.skife.jdbi.v2.DBI;
@@ -20,7 +19,9 @@ import org.skife.jdbi.v2.DBI;
  */
 @Slf4j
 public class JdbiModule extends CollectdModule {
+
   private SaveOkcoinTrendData saveOkcoinTrendData;
+
   public JdbiModule(AppCfg cfg, Environment env) {
     super(cfg, env);
     initJdbi();

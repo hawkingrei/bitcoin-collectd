@@ -1,7 +1,8 @@
 package com.suphawking.collectd.okcoin.test;
 
-import com.suphawking.collectd.core.domain.websocket.WebsocketSource;
+
 import com.suphawking.collectd.okcoin.client.HuobiClient;
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
 
 import org.junit.Test;
 

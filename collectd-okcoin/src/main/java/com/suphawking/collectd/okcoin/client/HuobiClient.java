@@ -1,8 +1,10 @@
 package com.suphawking.collectd.okcoin.client;
 
-import com.suphawking.collectd.core.domain.websocket.WebsocketSource;
-import com.suphawking.collectd.okcoin.WebSocketService;
+
 import com.google.inject.Inject;
+import com.suphawking.collectd.okcoin.WebSocketService;
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
+
 /**
  * Created by loveknut on 2016/11/17.
  */

@@ -1,4 +1,4 @@
-package com.suphawking.collectd.core.domain.bitcoin;
+package com.suphawking.collectd.spi.domain.bitcoin;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

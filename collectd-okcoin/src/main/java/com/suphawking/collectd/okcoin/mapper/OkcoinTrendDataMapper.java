@@ -1,6 +1,6 @@
 package com.suphawking.collectd.okcoin.mapper;
 
-import com.suphawking.collectd.jdbi.mapper.AutoMapper;
+import com.suphawking.collectd.spi.jdbi.AutoMapper;
 import com.suphawking.collectd.okcoin.vo.OkcoinBitcoinCurrentDataDO;
 
 import org.skife.jdbi.v2.StatementContext;

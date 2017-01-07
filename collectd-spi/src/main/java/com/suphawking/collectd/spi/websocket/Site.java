@@ -1,13 +1,13 @@
-package com.suphawking.collectd.core.domain.socketio;
+package com.suphawking.collectd.spi.websocket;
 
-import com.alibaba.fastjson.annotation.JSONCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-
+import com.alibaba.fastjson.annotation.JSONCreator;
 /**
- * Created by loveknut on 2016/11/27.
+ * Created by loveknut on 2016/11/18.
  */
+
 public enum Site {
-  HUOBI("HUOBI"),
+  OKCOIN("OKCOIN"),
   UNKNOWN("UNKOWN");
 
   public final String value;
@@ -31,3 +31,6 @@ public enum Site {
     return value;
   }
 }
+
+
+

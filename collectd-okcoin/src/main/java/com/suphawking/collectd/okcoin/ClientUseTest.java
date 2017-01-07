@@ -1,7 +1,8 @@
 package com.suphawking.collectd.okcoin;
 
-import com.suphawking.collectd.core.domain.websocket.WebsocketSource;
+
 import com.suphawking.collectd.okcoin.client.HuobiClient;
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
 
 /**
  * Created by loveknut on 2017/1/6.

@@ -28,6 +28,7 @@
     </dependencyManagement>
     <modules>
         <module>collectd-main</module>
+        <module>collectd-spi</module>
         <module>collectd-btcc</module>
         <module>collectd-okcoin</module>
         <module>collectd-huobi</module>
@@ -89,6 +90,10 @@
         <mysql.version>5.1.40</mysql.version>
         <junit.version>4.11</junit.version>
     </properties>
+
+
+
+
     <dependencies>
         <dependency>
             <groupId>com.google.inject</groupId>

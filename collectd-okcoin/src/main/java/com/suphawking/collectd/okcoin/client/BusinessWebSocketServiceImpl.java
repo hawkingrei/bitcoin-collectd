@@ -2,7 +2,7 @@ package com.suphawking.collectd.okcoin.client;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.suphawking.collectd.core.domain.data.huobi.SubSpotcnyBtcTicker;
+import com.suphawking.collectd.spi.domain.data.huobi.SubSpotcnyBtcTicker;
 import com.suphawking.collectd.okcoin.WebSocketService;
 
 import lombok.extern.slf4j.Slf4j;
