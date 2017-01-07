@@ -4,9 +4,12 @@ package com.suphawking.collectd;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.suphawking.collectd.application.managed.FManaged;
 import com.suphawking.collectd.health.JettyClientHealthCheck;
 import com.suphawking.collectd.jdbi.JdbiModule;
+import com.suphawking.collectd.okcoin.client.HuobiClient;
 import com.suphawking.collectd.quartz.QuartzModule;
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
 
 import io.dropwizard.Application;
 import io.dropwizard.assets.AssetsBundle;
@@ -62,6 +65,12 @@ public class App extends Application<AppCfg> {
     env.jersey().register(new JsonProcessingExceptionMapper());
     env.jersey().register(new EarlyEofExceptionMapper());
     env.healthChecks().register("jetty-client", injector.getInstance(JettyClientHealthCheck.class));
+    WebsocketSource clientsource = new WebsocketSource();
+    clientsource.setName("okcoin");
+    clientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
+
+    HuobiClient okclient = new HuobiClient(clientsource);
+    env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
   }
 
 }
