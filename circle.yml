@@ -3,7 +3,7 @@ machine:
     version: oraclejdk8
 dependencies:
   override:
-    - mvn build
+    - mvn package
 test:
   override:
     - mvn test
