@@ -148,7 +148,6 @@ public abstract class WebSocketBase {
     if (!isAlive) {
       log.info("WebSocket is not Alive addChannel error");
     }
-    log.info(message);
     channel.writeAndFlush(new TextWebSocketFrame(message));
   }
 

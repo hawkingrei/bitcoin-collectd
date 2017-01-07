@@ -27,14 +27,14 @@ public class BusinessWebSocketServiceImpl implements WebSocketService {
   }
 
   public void onReceive(String msg) {
-    log.info("WebSocket Client received message: " + msg);
+    log.debug("WebSocket Client received message: " + msg);
     if (!msg.equals(pong)) {
       List<HashMap> data =  JSONArray.parseArray(msg, HashMap.class);
       if (data.get(0).get("data") != null ) {
         SubSpotcnyBtcTicker tickerData = JSON.parseObject(data.get(0).get("data").toString(),
             SubSpotcnyBtcTicker.class);
 
-        log.info(tickerData.getBuy().toString());
+        //log.info(tickerData.getBuy().toString());
       }
     }
   }

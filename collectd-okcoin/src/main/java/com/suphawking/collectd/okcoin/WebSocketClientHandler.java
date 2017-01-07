@@ -20,12 +20,14 @@ import io.netty.handler.codec.http.websocketx.WebSocketClientHandshaker;
 import io.netty.handler.codec.http.websocketx.WebSocketFrame;
 import io.netty.util.CharsetUtil;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
 
 
-
+@Slf4j
 public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> {
 
   private final WebSocketClientHandshaker handshaker;
@@ -66,7 +68,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     moniter.updateTime();
     if (!handshaker.isHandshakeComplete()) {
       handshaker.finishHandshake(ch, (FullHttpResponse) msg);
-      System.out.println("WebSocket Client connected!");
+      log.info("WebSocket Client connected!");
       handshakeFuture.setSuccess();
       return;
     }
@@ -86,7 +88,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
       BinaryWebSocketFrame binaryFrame = (BinaryWebSocketFrame)frame;
       service.onReceive(decodeByteBuff(binaryFrame.content()));
     } else if (frame instanceof PongWebSocketFrame) {
-      System.out.println("WebSocket Client received pong");
+      log.debug("WebSocket Client received pong");
     } else if (frame instanceof CloseWebSocketFrame) {
       System.out.println("WebSocket Client received closing");
       ch.close();
