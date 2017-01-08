@@ -43,9 +43,13 @@ public class BusinessWebSocketServiceImpl implements WebSocketService {
             List<List<String>> tradaDate = JSON.parseObject(data.get(0).get("data").toString(),
                 List.class);
             //log.debug(tradaDate.get(0).toString());
-            tradaDate.parallelStream().forEach( n -> System.out.println(n));
+            //tradaDate.parallelStream().forEach( n -> System.out.println(n));
+            break;
+          case "ok_sub_spotcny_btc_depth_60":
+            log.info(data.get(0).toString());
             break;
           default:
+            log.info(data.get(0).toString());
             break;
         }
 

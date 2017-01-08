@@ -32,6 +32,7 @@ public class HuobiClient {
     //client.sendMessage(strMsg);
     client.addChannel("ok_sub_spotcny_btc_ticker");
     client.addChannel("ok_sub_spotcny_btc_trades");
+    client.addChannel("ok_sub_spotcny_btc_depth_60");
 
 
   }
