@@ -34,11 +34,11 @@ public class WsClient {
       //socket.emit("private", Arrays.asList(payload(), sign()));
     })
         .on("message", args -> System.out.println(args))
-        //.on("trade", new JsonLogger("trade"))
+        .on("trade", new JsonLogger("trade"))
         .on("ticker", new JsonLogger("ticker"))
         .on("grouporder", new JsonLogger("grouporder"))
         .on("order", new JsonLogger("order"))
-        .on("account_info", new JsonLogger("account_info"))
+        //.on("account_info", new JsonLogger("account_info"))
         .on(Socket.EVENT_DISCONNECT, args -> System.out.println("Disconnected."));
 
 
