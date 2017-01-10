@@ -29,9 +29,7 @@ class HuobiClient {
   public static void main(String[] args) throws Exception {
 
     URI url = new URI("http://hq.huobi.com:80");
-    String strMsg =
-        "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+
     try {
       SocketIO.setDefaultSSLSocketFactory(SSLContext.getDefault());
     } catch (NoSuchAlgorithmException e) {
@@ -78,14 +76,24 @@ class HuobiClient {
       }
 
     });
+    String strMsg =
+        "{\"symbolList\":{\"lastTimeLine\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
     JSONObject sendJO = new JSONObject().parseObject(strMsg);
-
     socket.emit("request", sendJO.toJSONString());
+
+
     strMsg =
         "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
             + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
     sendJO = new JSONObject().parseObject(strMsg);
+    socket.emit("request", sendJO.toJSONString());
 
+
+    strMsg =
+        "{\"symbolList\":{\"tradeDetail\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    sendJO = new JSONObject().parseObject(strMsg);
     socket.emit("request", sendJO.toJSONString());
     // This line is cached until the connection is establisched.
 
