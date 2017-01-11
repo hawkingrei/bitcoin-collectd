@@ -16,10 +16,6 @@ public class Client {
   IO.Options opts;
   Socket socket;
   MessageHandlerFactory messageHandlerFactory;
-  MessageHandler tradeHandler;
-  MessageHandler tickerHandler;
-  MessageHandler grouporderHandler;
-  MessageHandler orderHandler;
 
   Client(MessageHandlerFactory messageHandlerFactory, String url) throws URISyntaxException {
     this.messageHandlerFactory = messageHandlerFactory;
