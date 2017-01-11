@@ -51,6 +51,11 @@
             <artifactId>collectd-okcoin</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.suphawking.collectd</groupId>
+            <artifactId>collectd-btcc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>

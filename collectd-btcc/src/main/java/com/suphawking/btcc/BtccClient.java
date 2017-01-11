@@ -1,5 +1,7 @@
 package com.suphawking.btcc;
 
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
+
 import io.socket.client.IO;
 import io.socket.client.Socket;
 
@@ -11,17 +13,18 @@ import java.net.URISyntaxException;
  * Created by loveknut on 2017/1/10.
  */
 @Slf4j
-public class Client {
-  MessageHandler massageHandler;
-  IO.Options opts;
-  Socket socket;
-  MessageHandlerFactory messageHandlerFactory;
+public class BtccClient {
+  private MessageHandler massageHandler;
+  private IO.Options opts;
+  private Socket socket;
+  private MessageHandlerFactory messageHandlerFactory;
 
-  Client(MessageHandlerFactory messageHandlerFactory, String url) throws URISyntaxException {
+  public BtccClient(MessageHandlerFactory messageHandlerFactory,
+      WebsocketSource url) throws URISyntaxException {
     this.messageHandlerFactory = messageHandlerFactory;
     this.opts = new IO.Options();
     this.opts.reconnection = true;
-    this.socket = IO.socket(url, this.opts);
+    this.socket = IO.socket(url.getUrl(), this.opts);
 
   }
 

@@ -1,5 +1,7 @@
 package com.suphawking.btcc;
 
+import com.suphawking.collectd.spi.websocket.WebsocketSource;
+
 import java.net.URISyntaxException;
 
 /**
@@ -7,12 +9,15 @@ import java.net.URISyntaxException;
  */
 
 public class WsClientTest {
-  private static String URL = "https://websocket.btcchina.com";
+
 
   public static void main(String[] args0) throws URISyntaxException {
+    WebsocketSource btccClientsource = new WebsocketSource();
+    btccClientsource.setName("btcc");
+    btccClientsource.setUrl("https://websocket.btcchina.com");
 
     MessageHandlerFactory messageHandlerFactory = new MessageHandlerFactory();
-    Client cli = new Client(messageHandlerFactory, URL);
+    BtccClient cli = new BtccClient(messageHandlerFactory, btccClientsource);
 
     cli.start();
   }

@@ -36,6 +36,11 @@
             <artifactId>socket.io-client</artifactId>
             <version>${socket.io-client.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.suphawking.collectd</groupId>
+            <artifactId>collectd-spi</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 </project>

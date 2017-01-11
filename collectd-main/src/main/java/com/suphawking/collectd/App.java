@@ -4,6 +4,8 @@ package com.suphawking.collectd;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.suphawking.btcc.MessageHandlerFactory;
+import com.suphawking.btcc.BtccClient;
 import com.suphawking.collectd.application.managed.FManaged;
 import com.suphawking.collectd.health.JettyClientHealthCheck;
 import com.suphawking.collectd.jdbi.JdbiModule;
@@ -65,12 +67,23 @@ public class App extends Application<AppCfg> {
     env.jersey().register(new JsonProcessingExceptionMapper());
     env.jersey().register(new EarlyEofExceptionMapper());
     env.healthChecks().register("jetty-client", injector.getInstance(JettyClientHealthCheck.class));
-    WebsocketSource clientsource = new WebsocketSource();
-    clientsource.setName("okcoin");
-    clientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
+    WebsocketSource okcoinclientsource = new WebsocketSource();
+    okcoinclientsource.setName("okcoin");
+    okcoinclientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
 
-    HuobiClient okclient = new HuobiClient(clientsource);
+    HuobiClient okclient = new HuobiClient(okcoinclientsource);
     env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
+
+
+
+    WebsocketSource btccClientsource = new WebsocketSource();
+    btccClientsource.setName("btcc");
+    btccClientsource.setUrl("https://websocket.btcchina.com");
+
+    MessageHandlerFactory messageHandlerFactory = new MessageHandlerFactory();
+    BtccClient btcc = new BtccClient(messageHandlerFactory, btccClientsource);
+    env.lifecycle().manage(new FManaged(btcc::start, btcc::stop));
+
   }
 
 }
