@@ -11,12 +11,8 @@ public class WsClientTest {
 
   public static void main(String[] args0) throws URISyntaxException {
 
-
-    MessageHandler tradeHandler = new MessageHandler("trade");
-    MessageHandler tickerHandler = new MessageHandler("ticker");
-    MessageHandler grouporderHandler = new MessageHandler("grouporder");
-    MessageHandler orderHandler = new MessageHandler("order");
-    Client cli = new Client(tradeHandler, tickerHandler, grouporderHandler, orderHandler, URL);
+    MessageHandlerFactory messageHandlerFactory = new MessageHandlerFactory();
+    Client cli = new Client(messageHandlerFactory, URL);
 
     cli.start();
   }

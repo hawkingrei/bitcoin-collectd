@@ -15,45 +15,38 @@ public class Client {
   MessageHandler massageHandler;
   IO.Options opts;
   Socket socket;
+  MessageHandlerFactory messageHandlerFactory;
   MessageHandler tradeHandler;
   MessageHandler tickerHandler;
   MessageHandler grouporderHandler;
   MessageHandler orderHandler;
 
-  Client(MessageHandler tradeHandler,
-      MessageHandler tickerHandler,
-      MessageHandler grouporderHandler,
-      MessageHandler orderHandler, String url) throws URISyntaxException {
-    this.massageHandler = massageHandler;
+  Client(MessageHandlerFactory messageHandlerFactory, String url) throws URISyntaxException {
+    this.messageHandlerFactory = messageHandlerFactory;
     this.opts = new IO.Options();
     this.opts.reconnection = true;
     this.socket = IO.socket(url, this.opts);
-    this.tradeHandler = tradeHandler;
-    this.tickerHandler = tickerHandler;
-    this.grouporderHandler = grouporderHandler;
-    this.orderHandler = orderHandler;
+
   }
 
   public void start() {
     socket.on(Socket.EVENT_CONNECT, args -> {
-      System.out.println("Connected.");
+      log.info("Connected.");
 
       socket.emit("subscribe", "marketdata_cnybtc");
       //socket.emit("subscribe", "marketdata_cnyltc");
       //socket.emit("subscribe", "marketdata_btcltc");
-
       //socket.emit("subscribe", "grouporder_cnybtc");
       //socket.emit("subscribe", "grouporder_cnyltc");
       //socket.emit("subscribe", "grouporder_btcltc");
-
       //socket.emit("private", Arrays.asList(payload(), sign()));
     })
         .on("message", args -> log.info(args.toString()))
-        .on("trade", args -> tradeHandler.call(args))
-        .on("ticker", args -> tickerHandler.call(args))
-        .on("grouporder", args -> grouporderHandler.call(args))
-        .on("order", args -> orderHandler.call(args))
-        .on(Socket.EVENT_DISCONNECT, args -> System.out.println("Disconnected."));
+        .on("trade", messageHandlerFactory.getMessageHandler("trade"))
+        .on("ticker", messageHandlerFactory.getMessageHandler("ticker"))
+        .on("grouporder", messageHandlerFactory.getMessageHandler("grouporder"))
+        .on("order", messageHandlerFactory.getMessageHandler("order"))
+        .on(Socket.EVENT_DISCONNECT, args -> log.info("Disconnected."));
 
 
     socket.connect();

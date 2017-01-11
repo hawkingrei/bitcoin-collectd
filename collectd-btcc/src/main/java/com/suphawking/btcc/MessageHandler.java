@@ -18,6 +18,7 @@ public class MessageHandler implements Emitter.Listener {
   @Override
   public void call(Object... args) {
     JSONObject json = (JSONObject) args[0];
+
     System.out.println(prefix + "     " + json);
   }
 }
