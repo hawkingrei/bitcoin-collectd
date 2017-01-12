@@ -1,4 +1,6 @@
 machine:
+  services:
+    mysql
   java:
     version: openjdk8
 dependencies:
