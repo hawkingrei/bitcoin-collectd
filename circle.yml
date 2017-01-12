@@ -6,7 +6,7 @@ machine:
 dependencies:
   override:
     - mysql -u root --execute "create database collectd"
-    - mvn package
+    - mvn package -DskipTests
 test:
   override:
     - mvn test
