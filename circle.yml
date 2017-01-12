@@ -1,10 +1,11 @@
 machine:
-  services:
-    mysql
   java:
     version: openjdk8
+  services:
+    - mysql
 dependencies:
   override:
+    - mysql -u root --execute "create database collectd"
     - mvn package
 test:
   override:

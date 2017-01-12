@@ -1,6 +1,6 @@
 server:
   registerDefaultExceptionMappers: false
-  maxThreads: 20
+  maxThreads: 55
   applicationConnectors:
     - type: http
       port: 8688
