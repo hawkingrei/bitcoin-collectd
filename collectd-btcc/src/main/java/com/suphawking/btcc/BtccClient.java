@@ -8,6 +8,7 @@ import io.socket.client.Socket;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.URISyntaxException;
+import java.util.Arrays;
 
 /**
  * Created by loveknut on 2017/1/10.
@@ -40,7 +41,7 @@ public class BtccClient {
       //socket.emit("subscribe", "grouporder_btcltc");
       //socket.emit("private", Arrays.asList(payload(), sign()));
     })
-        .on("message", args -> log.info(args.toString()))
+        .on("message", args -> log.info(Arrays.toString(args)))
         .on("trade", messageHandlerFactory.getMessageHandler("trade"))
         .on("ticker", messageHandlerFactory.getMessageHandler("ticker"))
         .on("grouporder", messageHandlerFactory.getMessageHandler("grouporder"))
