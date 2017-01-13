@@ -3,6 +3,7 @@ package com.suphawking.collectd.health;
 /**
  * Created by loveknut on 2016/11/1.
  */
+
 import com.codahale.metrics.health.HealthCheck;
 import com.google.inject.Inject;
 

@@ -1,7 +1,8 @@
 package com.suphawking.collectd.spi.websocket;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.alibaba.fastjson.annotation.JSONCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  * Created by loveknut on 2016/11/18.
  */

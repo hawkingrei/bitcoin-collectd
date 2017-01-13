@@ -33,10 +33,10 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
   private final WebSocketClientHandshaker handshaker;
   private ChannelPromise handshakeFuture;
   private MoniterTask moniter;
-  private WebSocketService service ;
+  private WebSocketService service;
 
   public WebSocketClientHandler(WebSocketClientHandshaker handshaker,
-      WebSocketService service,MoniterTask moniter) {
+      WebSocketService service, MoniterTask moniter) {
     this.handshaker = handshaker;
     this.service = service;
     this.moniter = moniter;
@@ -77,7 +77,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
       FullHttpResponse response = (FullHttpResponse) msg;
       throw new IllegalStateException(
           "Unexpected FullHttpResponse (getStatus=" + response.getStatus()
-             + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')');
+              + ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')');
     }
 
     WebSocketFrame frame = (WebSocketFrame) msg;
@@ -85,7 +85,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
       TextWebSocketFrame textFrame = (TextWebSocketFrame) frame;
       service.onReceive(textFrame.text());
     } else if (frame instanceof BinaryWebSocketFrame) {
-      BinaryWebSocketFrame binaryFrame = (BinaryWebSocketFrame)frame;
+      BinaryWebSocketFrame binaryFrame = (BinaryWebSocketFrame) frame;
       service.onReceive(decodeByteBuff(binaryFrame.content()));
     } else if (frame instanceof PongWebSocketFrame) {
       log.debug("WebSocket Client received pong");
@@ -104,7 +104,7 @@ public class WebSocketClientHandler extends SimpleChannelInboundHandler<Object> 
     ctx.close();
   }
 
-  public  String decodeByteBuff(ByteBuf buf) throws IOException, DataFormatException {
+  public String decodeByteBuff(ByteBuf buf) throws IOException, DataFormatException {
 
     byte[] temp = new byte[buf.readableBytes()];
     ByteBufInputStream bis = new ByteBufInputStream(buf);

@@ -64,7 +64,7 @@ public class ManagedScheduler implements Managed {
     } else if (ann.interval() != -1) {
       trigger.withSchedule(SimpleScheduleBuilder.simpleSchedule()
           .withIntervalInMilliseconds(
-                TimeUnit.MILLISECONDS.convert(ann.interval(), ann.unit()))
+              TimeUnit.MILLISECONDS.convert(ann.interval(), ann.unit()))
           .withMisfireHandlingInstructionIgnoreMisfires()
           .repeatForever())
           .startAt(new Date(System.currentTimeMillis() + ann.delayInMillis()));

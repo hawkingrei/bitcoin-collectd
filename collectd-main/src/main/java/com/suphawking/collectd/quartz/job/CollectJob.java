@@ -24,7 +24,7 @@ public class CollectJob implements Job {
 
 
   @Inject
-  public CollectJob( Injector injector) {
+  public CollectJob(Injector injector) {
     this.injector = injector;
   }
 
@@ -33,7 +33,6 @@ public class CollectJob implements Job {
   public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
     log.info("done");
   }
-
 
 
 }

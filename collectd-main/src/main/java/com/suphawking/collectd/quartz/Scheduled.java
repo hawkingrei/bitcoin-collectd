@@ -3,6 +3,7 @@ package com.suphawking.collectd.quartz;
 /**
  * Created by loveknut on 2016/11/1.
  */
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

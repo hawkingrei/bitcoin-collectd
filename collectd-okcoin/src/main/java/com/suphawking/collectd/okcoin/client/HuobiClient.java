@@ -37,7 +37,7 @@ public class HuobiClient {
 
   }
 
-  public  void stop() throws Exception {
+  public void stop() throws Exception {
     client.stop();
 
   }

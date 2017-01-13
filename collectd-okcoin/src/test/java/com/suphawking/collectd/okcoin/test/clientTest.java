@@ -12,7 +12,7 @@ import org.junit.Test;
 public class clientTest {
 
   @Test
-  public void testClientGetData()  throws Exception {
+  public void testClientGetData() throws Exception {
     WebsocketSource clientsource = new WebsocketSource();
     clientsource.setName("okcoin");
     clientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");

@@ -3,6 +3,7 @@ package com.suphawking.collectd.quartz;
 /**
  * Created by loveknut on 2016/11/1.
  */
+
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 

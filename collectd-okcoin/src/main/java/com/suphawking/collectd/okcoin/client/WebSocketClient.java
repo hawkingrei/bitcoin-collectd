@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class WebSocketClient extends WebSocketBase {
-  public WebSocketClient(WebsocketSource source,WebSocketService service) {
-    super(source,service);
+  public WebSocketClient(WebsocketSource source, WebSocketService service) {
+    super(source, service);
   }
 }

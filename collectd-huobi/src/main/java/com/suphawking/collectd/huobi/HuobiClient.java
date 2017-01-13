@@ -13,6 +13,7 @@ import java.net.URI;
 import java.security.NoSuchAlgorithmException;
 
 import javax.net.ssl.SSLContext;
+
 /**
  * Created by loveknut on 2016/12/1.
  */
@@ -23,8 +24,7 @@ class HuobiClient {
   private SocketIO socket;
 
   /**
-   * @param args
-   * TEST
+   * @param args TEST
    */
   public static void main(String[] args) throws Exception {
 
@@ -36,7 +36,7 @@ class HuobiClient {
       throw new RuntimeException(e);
     }
     SocketIO socket = new SocketIO();
-    socket.connect(url.toURL(),new IOCallback() {
+    socket.connect(url.toURL(), new IOCallback() {
       @Override
       public void onError(SocketIOException socketIOException) {
         System.out.print("error");

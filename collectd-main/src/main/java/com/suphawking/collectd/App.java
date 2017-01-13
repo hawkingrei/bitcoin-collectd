@@ -4,8 +4,8 @@ package com.suphawking.collectd;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.suphawking.btcc.MessageHandlerFactory;
 import com.suphawking.btcc.BtccClient;
+import com.suphawking.btcc.MessageHandlerFactory;
 import com.suphawking.collectd.application.managed.FManaged;
 import com.suphawking.collectd.health.JettyClientHealthCheck;
 import com.suphawking.collectd.jdbi.JdbiModule;
@@ -73,7 +73,6 @@ public class App extends Application<AppCfg> {
 
     HuobiClient okclient = new HuobiClient(okcoinclientsource);
     env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
-
 
 
     WebsocketSource btccClientsource = new WebsocketSource();

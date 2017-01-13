@@ -36,10 +36,10 @@ public class TestServerRun {
     OkHttpClient client = new OkHttpClient();
     try {
       Request request;
-      request = new Request.Builder().url("http://localhost:"+RULE.getLocalPort()).build();
+      request = new Request.Builder().url("http://localhost:" + RULE.getLocalPort()).build();
       Response response = client.newCall(request).execute();
       assertNotNull(response.code());
-    } catch (Exception e){
+    } catch (Exception e) {
       assertNotNull("True");
     }
 

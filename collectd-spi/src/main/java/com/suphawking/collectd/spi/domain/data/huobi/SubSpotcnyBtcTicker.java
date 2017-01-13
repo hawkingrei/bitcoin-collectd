@@ -21,5 +21,4 @@ public class SubSpotcnyBtcTicker implements Serializable {
   private String timestamp;
 
 
-
 }

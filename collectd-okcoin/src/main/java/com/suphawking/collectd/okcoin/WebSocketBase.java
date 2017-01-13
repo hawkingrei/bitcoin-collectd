@@ -57,9 +57,9 @@ public abstract class WebSocketBase {
   }
 
   public void run() {
-    Preconditions.checkArgument( source != null,
+    Preconditions.checkArgument(source != null,
         "WebSocketClient start error  url can not be null");
-    Preconditions.checkArgument( service != null,
+    Preconditions.checkArgument(service != null,
         "WebSocketClient start error  WebSocketService can not be null");
     moniter = new MoniterTask(this);
     this.connect();
@@ -176,7 +176,6 @@ public abstract class WebSocketBase {
       e.printStackTrace();
     }
   }
-
 
 
 }
