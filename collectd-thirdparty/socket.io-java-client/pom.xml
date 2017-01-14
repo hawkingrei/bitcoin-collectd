@@ -3,7 +3,7 @@
   <groupId>io.socket</groupId>
   <artifactId>collectd-io.socket</artifactId>
   <version>0.2.2-SNAPSHOT</version>
-  <name>collectd-thirdparty</name>
+  <name>collectd-io.socket</name>
   <parent>
     <groupId>com.suphawking.collectd</groupId>
     <artifactId>collectd-thirdparty</artifactId>

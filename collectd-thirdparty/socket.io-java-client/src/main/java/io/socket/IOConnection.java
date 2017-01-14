@@ -31,11 +31,14 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.logging.Logger;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7fe05a2... style: pom structure
 /**
  * The Class IOConnection.
  */
