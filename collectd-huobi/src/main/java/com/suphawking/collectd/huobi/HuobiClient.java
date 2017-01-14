@@ -2,6 +2,7 @@ package com.suphawking.collectd.huobi;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonElement;
 
 import io.socket.IOAcknowledge;
@@ -9,15 +10,19 @@ import io.socket.IOCallback;
 import io.socket.SocketIO;
 import io.socket.SocketIOException;
 
+import lombok.extern.slf4j.Slf4j;
+
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.security.NoSuchAlgorithmException;
+import java.util.Map;
 
 import javax.net.ssl.SSLContext;
 
 /**
  * Created by loveknut on 2016/12/1.
  */
-
+@Slf4j
 class HuobiClient {
 
 
@@ -40,6 +45,7 @@ class HuobiClient {
       @Override
       public void onError(SocketIOException socketIOException) {
         System.out.print("error");
+        System.out.print(socketIOException.toString());
       }
 
       @Override
@@ -65,8 +71,10 @@ class HuobiClient {
 
       @Override
       public void on(String message, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
+        Type type = new TypeToken<Map<String, String>>(){}.getType();
         JsonElement jsonElement = jsonElements[0];
-        System.out.print(jsonElement.toString());
+        //List<HashMap> data = JSONArray.parseArray(jsonElement.toString(), HashMap.class);
+        //System.out.println(data.toString());
         //List<HashMap> data =  JSONArray.parseArray(stringmassage, HashMap.class);
         //System.out.println(data.get(0).get("payload"));
         //System.out.println(s.toString());
