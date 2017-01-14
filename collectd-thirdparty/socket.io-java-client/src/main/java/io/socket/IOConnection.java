@@ -15,6 +15,8 @@ import com.google.gson.JsonParseException;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -35,23 +37,16 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 7fe05a2... style: pom structure
 /**
  * The Class IOConnection.
  */
+@Slf4j
 class IOConnection implements IOCallback {
   public static final String FRAME_DELIMITER = "\ufffd"; //REPLACEMENT CHARACTER
   /**
    * Socket.io path.
    */
   public static final String SOCKET_IO_1 = "/socket.io/1/";
-  /**
-   * Debug logger
-   */
-  static final Logger logger = Logger.getLogger("io.socket");
   /**
    * The Constant STATE_INIT.
    */
@@ -397,7 +392,7 @@ class IOConnection implements IOCallback {
         connections.remove(urlStr);
       }
     }
-    logger.info("Cleanup");
+    log.debug("Cleanup");
     backgroundTimer.cancel();
     backgroundTimer = new Timer("backgroundTimer");
   }
@@ -422,10 +417,10 @@ class IOConnection implements IOCallback {
   private synchronized void sendPlain(String text) {
     if (getState() == STATE_READY) {
       try {
-        logger.info("> " + text);
+        log.debug("> " + text);
         transport.send(text);
       } catch (Exception e) {
-        logger.info("IOEx: saving");
+        log.error("IOEx: saving");
         outputBuffer.add(text);
       }
     } else {
@@ -549,7 +544,7 @@ class IOConnection implements IOCallback {
    * @param text the text
    */
   public void transportMessage(String text) {
-    logger.info("< " + text);
+    log.debug("< " + text);
     IOMessage message;
     try {
       message = new IOMessage(text);
@@ -619,7 +614,7 @@ class IOConnection implements IOCallback {
                     + "Message was: " + message.toString(), e));
           }
         } catch (JsonParseException e) {
-          logger.warning("Malformated JSON received");
+          log.warn("Malformated JSON received");
         }
         break;
       case IOMessage.TYPE_EVENT:
@@ -647,7 +642,7 @@ class IOConnection implements IOCallback {
                     + "Message was: " + message.toString(), e));
           }
         } catch (JsonParseException e) {
-          logger.warning("Malformated JSON received");
+          log.warn("Malformated JSON received");
         }
         break;
 
@@ -658,7 +653,7 @@ class IOConnection implements IOCallback {
             int id = Integer.parseInt(data[0]);
             IOAcknowledge ack = acknowledge.get(id);
             if (ack == null) {
-              logger.warning("Received unknown ack packet");
+              log.warn("Received unknown ack packet");
             } else {
               JsonArray array = new JsonParser().parse(data[1]).getAsJsonArray();
               JsonElement[] args = new JsonElement[array.size()];
@@ -668,10 +663,10 @@ class IOConnection implements IOCallback {
               ack.ack(args);
             }
           } catch (NumberFormatException e) {
-            logger.warning("Received malformated Acknowledge! "
+            log.warn("Received malformated Acknowledge! "
                 + "This is potentially filling up the acknowledges!");
           } catch (JsonParseException e) {
-            logger.warning("Received malformated Acknowledge data!");
+            log.warn("Received malformated Acknowledge data!");
           }
         } else if (data.length == 1) {
           sendPlain("6:::" + data[0]);
@@ -692,7 +687,7 @@ class IOConnection implements IOCallback {
       case IOMessage.TYPE_NOOP:
         break;
       default:
-        logger.warning("Unkown type received" + message.getType());
+        log.warn("Unkown type received" + message.getType());
         break;
     }
   }
@@ -708,11 +703,11 @@ class IOConnection implements IOCallback {
         // DEBUG
         String[] texts = outputBuffer.toArray(new String[outputBuffer
             .size()]);
-        logger.info("Bulk start:");
+        log.info("Bulk start:");
         for (String text : texts) {
-          logger.info("> " + text);
+          log.debug("> " + text);
         }
-        logger.info("Bulk end");
+        log.info("Bulk end");
         // DEBUG END
         transport.sendBulk(texts);
       } catch (IOException e) {

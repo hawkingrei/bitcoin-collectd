@@ -10,7 +10,6 @@ package io.socket;
 
 import com.google.gson.JsonElement;
 
-
 /**
  * The Interface IOAcknowledge.
  */
@@ -22,4 +21,5 @@ public interface IOAcknowledge {
    * @param args may be all types which can be serialized by {@link JSONArray#put(Object)}
    */
   void ack(JsonElement... args);
+  //void ack(Object... args);
 }
