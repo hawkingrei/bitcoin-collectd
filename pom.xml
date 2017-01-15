@@ -86,7 +86,7 @@
         </plugins>
     </build>
     <properties>
-        <guava.version>20.0</guava.version>
+        <guava.version>21.0</guava.version>
         <guice.version>4.1.0</guice.version>
         <jetty.version>9.3.13.v20161014</jetty.version>
         <fastjson.version>1.2.22</fastjson.version>
