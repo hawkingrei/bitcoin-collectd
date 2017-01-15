@@ -6,7 +6,15 @@
     <groupId>com.suphawking.collectd</groupId>
     <artifactId>collectd-root</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.5.2</version>
+            </plugin>
+        </plugins>
+    </reporting>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -96,10 +104,12 @@
         <mysql.version>5.1.40</mysql.version>
         <junit.version>4.11</junit.version>
         <okhttp.version>3.5.0</okhttp.version>
+        <findbugs.version>3.0.1</findbugs.version>
     </properties>
 
 
     <dependencies>
+
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>

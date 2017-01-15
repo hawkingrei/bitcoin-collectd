@@ -19,5 +19,6 @@ script:
 - mvn clean package
 - mvn cobertura:cobertura
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
+- mvn clean compile findbugs:findbugs
 after_success:
 - bash <(curl -s https://codecov.io/bash)
