@@ -83,7 +83,7 @@ class IOConnection implements IOCallback {
   /**
    * Acknowledges.
    */
-  HashMap<Integer, IOAcknowledge> acknowledge = new HashMap<Integer, IOAcknowledge>();
+  HashMap<Integer, IOAcknowledge> acknowledge = new HashMap<>();
   /**
    * The state.
    */
@@ -123,7 +123,7 @@ class IOConnection implements IOCallback {
   /**
    * The sockets of this connection.
    */
-  private HashMap<String, SocketIO> sockets = new HashMap<String, SocketIO>();
+  private HashMap<String, SocketIO> sockets = new HashMap<>();
   /**
    * Custom Request headers used while handshaking
    */
