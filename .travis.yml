@@ -16,7 +16,7 @@ cache:
   - $HOME/.m2/repository
 script:
 - jdk_switcher use oraclejdk8
-- mvn clean package
+- mvn clean package -DskipTests
 - mvn cobertura:cobertura
 - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
 - mvn clean compile findbugs:findbugs
