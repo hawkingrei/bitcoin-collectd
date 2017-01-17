@@ -39,8 +39,8 @@ class XhrTransport implements IOTransport {
   /**
    * background thread for managing the server connection.
    */
-  PollThread pollThread = null;
-  HttpURLConnection urlConnection;
+  private PollThread pollThread = null;
+  private HttpURLConnection urlConnection;
   /**
    * The connection.
    */
