@@ -1,3 +1,0 @@
-[submodule "thirdparty/socket.io-java-client"]
-	path = thirdparty/socket.io-java-client
-	url = git://github.com/Gottox/socket.io-java-client.git

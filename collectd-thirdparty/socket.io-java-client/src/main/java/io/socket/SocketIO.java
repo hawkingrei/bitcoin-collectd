@@ -213,7 +213,7 @@ public class SocketIO {
     if (this.callback != null && this.url != null) {
       final String origin = this.url.getProtocol() + "://" + this.url.getAuthority();
       this.namespace = this.url.getPath();
-      if (this.namespace.equals("/")) {
+      if ("/".equals(this.namespace)) {
         this.namespace = "";
       }
       this.connection = IOConnection.register(origin, this);

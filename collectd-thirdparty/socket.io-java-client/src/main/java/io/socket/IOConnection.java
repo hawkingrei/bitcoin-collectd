@@ -202,8 +202,6 @@ class IOConnection implements IOCallback {
     IOConnection.sslContext = sslContext;
   }
 
-  ;
-
   /**
    * Creates a new connection or returns the corresponding one.
    *
@@ -336,7 +334,7 @@ class IOConnection implements IOCallback {
    */
   private IOAcknowledge remoteAcknowledge(IOMessage message) {
     String stringid = message.getId();
-    if (stringid.equals("")) {
+    if ("".equals(stringid)) {
       return null;
     } else if (stringid.endsWith("+") == false) {
       stringid = stringid + "+";
@@ -420,7 +418,7 @@ class IOConnection implements IOCallback {
         log.debug("> " + text);
         transport.send(text);
       } catch (Exception e) {
-        log.error("IOEx: saving");
+        log.error("IOEx: saving %s",e);
         outputBuffer.add(text);
       }
     } else {
@@ -566,7 +564,7 @@ class IOConnection implements IOCallback {
         try {
           if (firstSocket != null && "".equals(message.getEndpoint())) {
             setState(STATE_READY);
-            if (firstSocket.getNamespace().equals("")) {
+            if ("".equals(firstSocket.getNamespace())) {
               firstSocket.getCallback().onConnect();
             } else {
               IOMessage connect = new IOMessage(
@@ -602,7 +600,7 @@ class IOConnection implements IOCallback {
         try {
           JsonElement obj = null;
           String data = message.getData();
-          if (data.trim().equals("null") == false) {
+          if ("null".equals(data.trim()) == false) {
             obj = new JsonParser().parse(data);
           }
           try {
@@ -614,7 +612,7 @@ class IOConnection implements IOCallback {
                     + "Message was: " + message.toString(), e));
           }
         } catch (JsonParseException e) {
-          log.warn("Malformated JSON received");
+          log.warn("Malformated JSON received:  %s",e);
         }
         break;
       case IOMessage.TYPE_EVENT:
@@ -642,7 +640,7 @@ class IOConnection implements IOCallback {
                     + "Message was: " + message.toString(), e));
           }
         } catch (JsonParseException e) {
-          log.warn("Malformated JSON received");
+          log.warn("Malformated JSON received: %s",e);
         }
         break;
 
@@ -666,7 +664,7 @@ class IOConnection implements IOCallback {
             log.warn("Received malformated Acknowledge! "
                 + "This is potentially filling up the acknowledges!");
           } catch (JsonParseException e) {
-            log.warn("Received malformated Acknowledge data!");
+            log.warn("Received malformated Acknowledge data : %s",e);
           }
         } else if (data.length == 1) {
           sendPlain("6:::" + data[0]);
