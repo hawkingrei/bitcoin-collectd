@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:3="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.suphawking.collectd</groupId>
     <artifactId>collectd-root</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <guava.version>19.0</guava.version>
+        <guice.version>4.1.0</guice.version>
+        <jetty.version>9.3.9.v20160517</jetty.version>
+        <fastjson.version>1.2.22</fastjson.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <dropwizard.version>1.0.5</dropwizard.version>
+        <quartz.version>2.2.1</quartz.version>
+        <mysql.version>5.1.40</mysql.version>
+        <junit.version>4.12</junit.version>
+        <okhttp.version>3.5.0</okhttp.version>
+
+        <findbugs.version>3.0.1</findbugs.version>
+
+        <maven-enforcer-plugin.version>1.3.1</maven-enforcer-plugin.version>
+        <maven-shade-plugin.version>1.6</maven-shade-plugin.version>
+        <maven-jar-plugin.version>2.4</maven-jar-plugin.version>
+        <maven.source.version>2.1</maven.source.version>
+    </properties>
+
+
     <reporting>
         <plugins>
             <plugin>
@@ -36,15 +58,48 @@
     </dependencyManagement>
     <modules>
         <module>collectd-thirdparty</module>
-        <module>collectd-main</module>
         <module>collectd-spi</module>
         <module>collectd-btcc</module>
         <module>collectd-okcoin</module>
         <module>collectd-huobi</module>
+        <module>collectd-main</module>
     </modules>
     <packaging>pom</packaging>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>enforce</id>
+                        <configuration>
+                            <rules>
+                                <DependencyConvergence/>
+                            </rules>
+                        </configuration>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven.source.version}</version>
+                <configuration>
+                    <attach>true</attach>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
@@ -70,6 +125,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
+                    <encoding>UTF-8</encoding>
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
@@ -91,25 +147,61 @@
                     <check/>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
-    <properties>
-        <guava.version>21.0</guava.version>
-        <guice.version>4.1.0</guice.version>
-        <jetty.version>9.3.13.v20161014</jetty.version>
-        <fastjson.version>1.2.22</fastjson.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <dropwizard.version>1.0.5</dropwizard.version>
-        <quartz.version>2.2.1</quartz.version>
-        <mysql.version>5.1.40</mysql.version>
-        <junit.version>4.11</junit.version>
-        <okhttp.version>3.5.0</okhttp.version>
-        <findbugs.version>3.0.1</findbugs.version>
-    </properties>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>${maven-shade-plugin.version}</version>
+                <configuration>
+                    <createDependencyReducedPom>true</createDependencyReducedPom>
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                    <finalName>collectd-shaded</finalName>
+                </configuration>
 
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.suphawking.collectd.App</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
 
     <dependencies>
-
         <dependency>
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
@@ -140,11 +232,23 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-jackson</artifactId>
             <version>${dropwizard.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-assets</artifactId>
             <version>${dropwizard.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>io.dropwizard</groupId>
@@ -155,6 +259,12 @@
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-testing</artifactId>
             <version>${dropwizard.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.objenesis</groupId>
+                    <artifactId>objenesis</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -221,11 +331,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>${okhttp.version}</version>
-            <scope>test</scope>
-        </dependency>
+
     </dependencies>
 </project>
