@@ -37,7 +37,7 @@
         </dependency>
         <dependency>
             <groupId>io.socket</groupId>
-            <artifactId>collectd-io.socket</artifactId>
+            <artifactId>socket.io-client</artifactId>
             <version>${socket.io-client.version}</version>
             <exclusions>
                 <exclusion>
