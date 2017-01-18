@@ -57,7 +57,6 @@
         </dependencies>
     </dependencyManagement>
     <modules>
-        <module>collectd-thirdparty</module>
         <module>collectd-spi</module>
         <module>collectd-btcc</module>
         <module>collectd-okcoin</module>
