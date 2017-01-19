@@ -1,6 +1,5 @@
 package com.suphawking.collectd.okcoin.client;
 
-
 import com.google.inject.Inject;
 import com.suphawking.collectd.okcoin.WebSocketService;
 import com.suphawking.collectd.spi.websocket.WebsocketSource;
@@ -9,14 +8,14 @@ import com.suphawking.collectd.spi.websocket.WebsocketSource;
  * Created by loveknut on 2016/11/17.
  */
 
-public class HuobiClient {
+public class OkcoinClient {
   private static final String ENDPOINT = "http://hq.huobi.com:80/socket.io/1/";
 
   private WebsocketSource clientsource;
   private WebSocketClient client;
 
   @Inject
-  public HuobiClient(WebsocketSource clientsource) {
+  public OkcoinClient(WebsocketSource clientsource) {
     this.clientsource = clientsource;
 
   }

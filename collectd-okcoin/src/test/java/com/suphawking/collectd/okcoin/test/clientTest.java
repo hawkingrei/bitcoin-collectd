@@ -1,7 +1,7 @@
 package com.suphawking.collectd.okcoin.test;
 
 
-import com.suphawking.collectd.okcoin.client.HuobiClient;
+import com.suphawking.collectd.okcoin.client.OkcoinClient;
 import com.suphawking.collectd.spi.websocket.WebsocketSource;
 
 import org.junit.Test;
@@ -17,7 +17,7 @@ public class clientTest {
     clientsource.setName("okcoin");
     clientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
 
-    HuobiClient client = new HuobiClient(clientsource);
+    OkcoinClient client = new OkcoinClient(clientsource);
     client.start();
     client.stop();
   }

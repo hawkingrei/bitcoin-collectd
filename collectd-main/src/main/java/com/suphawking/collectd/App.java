@@ -9,7 +9,7 @@ import com.suphawking.btcc.MessageHandlerFactory;
 import com.suphawking.collectd.application.managed.FManaged;
 import com.suphawking.collectd.health.JettyClientHealthCheck;
 import com.suphawking.collectd.jdbi.JdbiModule;
-import com.suphawking.collectd.okcoin.client.HuobiClient;
+import com.suphawking.collectd.okcoin.client.OkcoinClient;
 import com.suphawking.collectd.quartz.QuartzModule;
 import com.suphawking.collectd.spi.websocket.WebsocketSource;
 
@@ -71,7 +71,7 @@ public class App extends Application<AppCfg> {
     okcoinclientsource.setName("okcoin");
     okcoinclientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
 
-    HuobiClient okclient = new HuobiClient(okcoinclientsource);
+    OkcoinClient okclient = new OkcoinClient(okcoinclientsource);
     env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
 
 
