@@ -1,6 +1,7 @@
 package com.suphawking.collectd.huobi;
 
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonElement;
@@ -15,6 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.SSLContext;
@@ -65,14 +68,27 @@ class HuobiClient {
 
       @Override
       public void onMessage(JsonElement jsonElement, IOAcknowledge ioAcknowledge) {
-        //System.out.print(jsonElement.toString());
-
+        System.out.print(jsonElement.toString());
       }
 
       @Override
       public void on(String message, IOAcknowledge ioAcknowledge, JsonElement... jsonElements) {
         Type type = new TypeToken<Map<String, String>>(){}.getType();
         JsonElement jsonElement = jsonElements[0];
+        //System.out.println(jsonElement.getAsJsonObject().get("msgType").toString());
+        //System.out.println(jsonElement.getAsJsonObject().get("payload").toString());
+
+        switch (jsonElement.getAsJsonObject().get("msgType").getAsString()){
+          case "reqMsgSubscribe":
+            break;
+          case "lastTimeLine":
+            System.out.println(jsonElement.getAsJsonObject().get("payload").toString());
+            break;
+          default:
+            break;
+        }
+
+
         //List<HashMap> data = JSONArray.parseArray(jsonElement.toString(), HashMap.class);
         //System.out.println(data.toString());
         //List<HashMap> data =  JSONArray.parseArray(stringmassage, HashMap.class);
@@ -91,18 +107,18 @@ class HuobiClient {
     socket.emit("request", sendJO.toJSONString());
 
 
-    strMsg =
-        "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
-    sendJO = new JSONObject().parseObject(strMsg);
-    socket.emit("request", sendJO.toJSONString());
+    //strMsg =
+    //    "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+    //        + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    //sendJO = new JSONObject().parseObject(strMsg);
+    //socket.emit("request", sendJO.toJSONString());
 
 
-    strMsg =
-        "{\"symbolList\":{\"tradeDetail\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
-    sendJO = new JSONObject().parseObject(strMsg);
-    socket.emit("request", sendJO.toJSONString());
+    //strMsg =
+    //    "{\"symbolList\":{\"tradeDetail\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+    //        + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    //sendJO = new JSONObject().parseObject(strMsg);
+    //socket.emit("request", sendJO.toJSONString());
     // This line is cached until the connection is establisched.
 
   }
