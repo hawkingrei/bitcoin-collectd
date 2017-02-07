@@ -1,7 +1,5 @@
 package com.suphawking.collectd.huobi;
 
-
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.JsonElement;
@@ -16,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.lang.reflect.Type;
 import java.net.URI;
 import java.security.NoSuchAlgorithmException;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import javax.net.ssl.SSLContext;
@@ -78,7 +74,7 @@ class HuobiClient {
         //System.out.println(jsonElement.getAsJsonObject().get("msgType").toString());
         //System.out.println(jsonElement.getAsJsonObject().get("payload").toString());
 
-        switch (jsonElement.getAsJsonObject().get("msgType").getAsString()){
+        switch (jsonElement.getAsJsonObject().get("msgType").getAsString()) {
           case "reqMsgSubscribe":
             break;
           case "lastTimeLine":
@@ -108,7 +104,7 @@ class HuobiClient {
 
 
     //strMsg =
-    //    "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+    //  "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
     //        + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
     //sendJO = new JSONObject().parseObject(strMsg);
     //socket.emit("request", sendJO.toJSONString());
