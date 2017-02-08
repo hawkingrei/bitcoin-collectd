@@ -103,19 +103,19 @@ class HuobiClient {
     socket.emit("request", sendJO.toJSONString());
 
 
-    //strMsg =
-    //  "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-    //        + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
-    //sendJO = new JSONObject().parseObject(strMsg);
-    //socket.emit("request", sendJO.toJSONString());
+    strMsg =
+      "{\"symbolList\":{\"marketDepthTop\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    sendJO = new JSONObject().parseObject(strMsg);
+    socket.emit("request", sendJO.toJSONString());
 
 
-    //strMsg =
-    //    "{\"symbolList\":{\"tradeDetail\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
-    //        + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
-    //sendJO = new JSONObject().parseObject(strMsg);
-    //socket.emit("request", sendJO.toJSONString());
-    // This line is cached until the connection is establisched.
+    strMsg =
+        "{\"symbolList\":{\"tradeDetail\":[{\"symbolId\":\"btccny\",\"pushType\":\"pushLong\"}],"
+            + "},\"version\":1,\"msgType\":\"reqMsgSubscribe\",\"requestIndex\":1404103038520}";
+    sendJO = new JSONObject().parseObject(strMsg);
+    socket.emit("request", sendJO.toJSONString());
+    //This line is cached until the connection is establisched.
 
   }
 
