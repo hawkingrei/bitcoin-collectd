@@ -78,15 +78,15 @@ class HuobiClient {
           case "reqMsgSubscribe":
             break;
           case "lastTimeLine":
-            System.out.println("lastTimeLine    ");
+            //System.out.println("lastTimeLine    ");
             System.out.println(jsonElement.getAsJsonObject().get("payload").toString());
             break;
           case "marketDepthTop":
-            System.out.println("marketDepthTop    ");
+            //System.out.println("marketDepthTop    ");
             System.out.println(jsonElement.getAsJsonObject().get("payload").toString());
             break;
           case "tradeDetail":
-            System.out.println("tradeDetail    ");
+            //System.out.println("tradeDetail    ");
             System.out.println(jsonElement.getAsJsonObject().get("payload").toString());
             break;
           default:
