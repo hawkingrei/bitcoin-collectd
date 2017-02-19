@@ -52,7 +52,8 @@ public class App extends Application<AppCfg> {
         new RootModule(cfg, env),
         new QuartzModule(cfg, env)
     );
-
+    MongoManaged mongoManaged = new MongoManaged(cfg.mongo);
+    env.lifecycle().manage(mongoManaged);
     env.jersey().register(new LoggingExceptionMapper<Throwable>() {
     });
     env.jersey().register(new JsonProcessingExceptionMapper());
