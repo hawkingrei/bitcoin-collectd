@@ -1,14 +1,12 @@
 package com.suphawking.collectd;
 
 
-import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.suphawking.btcc.BtccClient;
 import com.suphawking.btcc.MessageHandlerFactory;
 import com.suphawking.collectd.application.managed.FManaged;
 import com.suphawking.collectd.health.JettyClientHealthCheck;
-import com.suphawking.collectd.jdbi.JdbiModule;
 import com.suphawking.collectd.okcoin.client.OkcoinClient;
 import com.suphawking.collectd.quartz.QuartzModule;
 import com.suphawking.collectd.spi.websocket.WebsocketSource;
@@ -23,8 +21,6 @@ import io.dropwizard.setup.Environment;
 import io.dropwizard.views.ViewBundle;
 
 import lombok.extern.slf4j.Slf4j;
-
-import java.text.SimpleDateFormat;
 
 /**
  * Created by loveknut on 2016/10/31.
@@ -46,10 +42,6 @@ public class App extends Application<AppCfg> {
 
   @Override
   public void initialize(Bootstrap<AppCfg> bootstrap) {
-    bootstrap.getObjectMapper()
-        .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-        .setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
-
     bootstrap.addBundle(new ViewBundle());
     bootstrap.addBundle(new AssetsBundle("/assets", "/assets"));
   }
@@ -58,8 +50,7 @@ public class App extends Application<AppCfg> {
   public void run(AppCfg cfg, Environment env) throws Exception {
     Injector injector = Guice.createInjector(
         new RootModule(cfg, env),
-        new QuartzModule(cfg, env),
-        new JdbiModule(cfg, env)
+        new QuartzModule(cfg, env)
     );
 
     env.jersey().register(new LoggingExceptionMapper<Throwable>() {
