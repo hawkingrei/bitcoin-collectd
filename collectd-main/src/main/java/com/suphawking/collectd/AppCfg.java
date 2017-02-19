@@ -1,9 +1,9 @@
 package com.suphawking.collectd;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.suphawking.collectd.db.MongoConfiguration;
 
 import io.dropwizard.Configuration;
-import io.dropwizard.db.DataSourceFactory;
 
 import lombok.Data;
 
@@ -19,6 +19,6 @@ public class AppCfg extends Configuration {
   @Valid
   @NotNull
   @JsonProperty("collectorDb")
-  private DataSourceFactory collectorDbFactory = new DataSourceFactory();
+  public MongoConfiguration mongo = new MongoConfiguration();
 
 }

@@ -1,7 +1,6 @@
 package com.suphawking.collectd.spi.domain.socketio;
 
 import com.alibaba.fastjson.annotation.JSONCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * Created by loveknut on 2016/11/27.
@@ -26,7 +25,6 @@ public enum Site {
     return UNKNOWN;
   }
 
-  @JsonValue
   public String value() {
     return value;
   }
