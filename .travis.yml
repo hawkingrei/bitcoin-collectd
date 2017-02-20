@@ -10,7 +10,8 @@ jdk:
 before_cache:
 - rm -rf $HOME/.m2/repository/com/suphawking
 before_install:
-- mongo mydb_test --eval 'db.addUser("admin", "admin");
+- sleep 15
+- mongo mydb_test --eval 'db.addUser("admin", "admin");'
 cache:
   directories:
   - $HOME/.m2/repository
