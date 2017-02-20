@@ -2,7 +2,7 @@ machine:
   java:
     version: openjdk8
   services:
-    - mongodb
+    - mongod
 dependencies:
   override:
     - mongo collector  --eval 'db.addUser("admin", "admin");'
