@@ -4,13 +4,13 @@ addons:
     token:
       secure: "0jQi1ddb66A0eyzc8cEcr2JM0fawgABef5N54fW/1ESS2NqW8eM6Ms3ujPJe6mY1tGgZ9XbL0LG09tEIzRCZV+ura/3zUhshBuv0XtE1+BcV/o1sWSNDAijiXKKcP39MAvhiE3+I1wCMXSyhx+IZm4HLxya4y6cksGD2rKD62yG9p5Dqls0zJ0i8onYXW8r44lt186zpvwey6IuEnGG1QHmPLF4hMoBikRtqevIbzDW3qwe1PSULxTor/J2UYQ3t0LucG75QTTnbsRKxrSyby8ZwTr2fJPbUwtu2Bc3EeIfdT8T7iAkzr7hftIATa/evajepVxEIywJjWPOSG++e0hLtAu0Fd+720qLY5cu+yFZMXaRpkooMLaZ1zg+F3+vXTV1J8Ig5Z3YSlO9vN4qMk8nBzjqJSd5KsLyUOJnEEV1zRdYuniXiz+TPgZJWE7UpOgTznbmpaAX0b+QHGDTImJNy70RjMHvjah0yA2cCDLFPg9adXpmSfWucEyCT7v/787tftmrc3+u/J9ranUdi7imBP8PcmiQVRQcDFepbDLKFXJv7rcxTOO+cgiNwU/UwIuMXB4V1kEq+gw9WDZ2qs+mNJZoSndwHKbzrVIFR4ims+F50Bwivh3sv8pRK03VIIW6YjpCCKtWlTnBa65upA/wKdadTJHpcok/JH/uCQJs="
 services:
-- mysql
+- mongodb
 jdk:
 - oraclejdk8
 before_cache:
 - rm -rf $HOME/.m2/repository/com/suphawking
 before_install:
-- mysql -e 'create database collectd;'
+- mongo mydb_test --eval 'db.addUser("admin", "admin");
 cache:
   directories:
   - $HOME/.m2/repository
