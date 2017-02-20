@@ -1,10 +1,10 @@
 package com.suphawking.collectd;
 
-import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoDatabase;
 import com.suphawking.collectd.db.MongoConfiguration;
 
 import io.dropwizard.lifecycle.Managed;
@@ -19,7 +19,7 @@ public class MongoManaged implements Managed {
 
   private MongoClient mongocli;
   private MongoCredential credential;
-  private DB db;
+  private MongoDatabase db;
 
   public MongoManaged(MongoConfiguration mongoConfig) throws Exception {
     credential = MongoCredential.createCredential(mongoConfig.user, mongoConfig.db,
@@ -28,7 +28,7 @@ public class MongoManaged implements Managed {
     mongocli = new MongoClient(new ServerAddress(mongoConfig.host, mongoConfig.port),
         Arrays.asList(credential),
         options);
-    db = (DB) mongocli.getDatabase("test");
+    db = mongocli.getDatabase("test");
   }
 
 
@@ -46,7 +46,7 @@ public class MongoManaged implements Managed {
     return mongocli;
   }
 
-  public DB getDb() {
+  public MongoDatabase getDb() {
     return db;
   }
 }
