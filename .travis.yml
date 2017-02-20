@@ -11,7 +11,7 @@ before_cache:
 - rm -rf $HOME/.m2/repository/com/suphawking
 before_install:
 - sleep 15
-- mongo mydb_test --eval 'db.addUser("admin", "admin");'
+- mongo collector  --eval 'db.addUser("admin", "admin");'
 cache:
   directories:
   - $HOME/.m2/repository
