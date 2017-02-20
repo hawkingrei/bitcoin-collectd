@@ -23,10 +23,10 @@ public class MongoManaged implements Managed {
   private DB db;
 
   public MongoManaged(MongoConfiguration mongoConfig) throws Exception {
-    this.credential = MongoCredential.createCredential(mongoConfig.user, mongoConfig.db,
+    credential = MongoCredential.createCredential(mongoConfig.user, mongoConfig.db,
         mongoConfig.password.toCharArray());
     MongoClientOptions options = MongoClientOptions.builder().sslEnabled(false).build();
-    this.mongocli = new MongoClient(new ServerAddress(mongoConfig.host, mongoConfig.port),
+    mongocli = new MongoClient(new ServerAddress(mongoConfig.host, mongoConfig.port),
         Arrays.asList(credential),
         options);
   }
@@ -39,7 +39,7 @@ public class MongoManaged implements Managed {
 
   @Override
   public void stop() throws Exception {
-    this.mongocli.close();
+    mongocli.close();
   }
 
   public Mongo getMongo() {
