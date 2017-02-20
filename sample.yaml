@@ -1,4 +1,13 @@
+collectorDb:
+  host:     localhost
+  port:     27017
+  db:       collector
+  user:     admin
+  password: admin
+
 server:
+  type: default
+  registerDefaultExceptionMappers: false
   maxThreads: 20
   applicationConnectors:
     - type: http
@@ -12,10 +21,4 @@ server:
 logging:
   level: INFO
 
-collectorDb:
-  host:     localhost
-  port:     27017
-  db:       collector
-  user:
-  password:
 
