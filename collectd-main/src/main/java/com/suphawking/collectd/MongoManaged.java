@@ -39,7 +39,7 @@ public class MongoManaged implements Managed {
 
   @Override
   public void stop() throws Exception {
-    this.mongo.close();
+    this.mongocli.close();
   }
 
   public Mongo getMongo() {
