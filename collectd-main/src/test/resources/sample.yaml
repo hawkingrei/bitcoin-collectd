@@ -1,5 +1,4 @@
 server:
-  registerDefaultExceptionMappers: false
   maxThreads: 20
   applicationConnectors:
     - type: http
