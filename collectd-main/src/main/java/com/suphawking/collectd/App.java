@@ -1,6 +1,7 @@
 package com.suphawking.collectd;
 
 
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.suphawking.btcc.BtccClient;
@@ -23,6 +24,8 @@ import io.dropwizard.views.ViewBundle;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by loveknut on 2016/10/31.
  */
@@ -43,6 +46,9 @@ public class App extends Application<AppCfg> {
 
   @Override
   public void initialize(Bootstrap<AppCfg> bootstrap) {
+    bootstrap.getObjectMapper()
+                .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+                .setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
     bootstrap.addBundle(new ViewBundle());
     bootstrap.addBundle(new AssetsBundle("/assets", "/assets"));
   }
