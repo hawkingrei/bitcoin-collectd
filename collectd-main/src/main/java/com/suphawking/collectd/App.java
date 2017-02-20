@@ -72,7 +72,7 @@ public class App extends Application<AppCfg> {
     okcoinclientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
 
     OkcoinClient okclient = new OkcoinClient(okcoinclientsource);
-    env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
+    //env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
 
     WebsocketSource btccClientsource = new WebsocketSource();
     btccClientsource.setName("btcc");
