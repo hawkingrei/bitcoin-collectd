@@ -2,10 +2,10 @@ machine:
   java:
     version: openjdk8
   services:
-    - mongod
+    - mysql
 dependencies:
   override:
-    - mongo collector  --eval 'db.addUser("admin", "admin");'
+    - mysql -u root --execute "create database collectd"
     - mvn package -DskipTests
 test:
   override:
