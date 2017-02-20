@@ -1,7 +1,6 @@
 package com.suphawking.collectd;
 
 import com.mongodb.DB;
-import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.MongoCredential;
@@ -17,7 +16,7 @@ import java.util.Arrays;
  */
 public class MongoManaged implements Managed {
 
-  private Mongo mongo;
+
   private MongoClient mongocli;
   private MongoCredential credential;
   private DB db;
@@ -29,6 +28,7 @@ public class MongoManaged implements Managed {
     mongocli = new MongoClient(new ServerAddress(mongoConfig.host, mongoConfig.port),
         Arrays.asList(credential),
         options);
+    db = (DB) mongocli.getDatabase("test");
   }
 
 
@@ -42,8 +42,8 @@ public class MongoManaged implements Managed {
     mongocli.close();
   }
 
-  public Mongo getMongo() {
-    return mongo;
+  public MongoClient getMongo() {
+    return mongocli;
   }
 
   public DB getDb() {
