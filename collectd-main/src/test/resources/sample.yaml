@@ -8,7 +8,7 @@ collectorDb:
 server:
   type: default
   registerDefaultExceptionMappers: false
-  maxThreads: 30
+  maxThreads: 20
   applicationConnectors:
     - type: http
       port: 8688
