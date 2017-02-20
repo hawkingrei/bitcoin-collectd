@@ -7,6 +7,7 @@ import com.suphawking.btcc.BtccClient;
 import com.suphawking.btcc.MessageHandlerFactory;
 import com.suphawking.collectd.application.managed.FManaged;
 import com.suphawking.collectd.health.JettyClientHealthCheck;
+import com.suphawking.collectd.health.MongoHealthCheck;
 import com.suphawking.collectd.okcoin.client.OkcoinClient;
 import com.suphawking.collectd.quartz.QuartzModule;
 import com.suphawking.collectd.spi.websocket.WebsocketSource;
@@ -59,13 +60,13 @@ public class App extends Application<AppCfg> {
     env.jersey().register(new JsonProcessingExceptionMapper());
     env.jersey().register(new EarlyEofExceptionMapper());
     env.healthChecks().register("jetty-client", injector.getInstance(JettyClientHealthCheck.class));
+    env.healthChecks().register("MongoHealthCheck", new MongoHealthCheck(mongoManaged));
     WebsocketSource okcoinclientsource = new WebsocketSource();
     okcoinclientsource.setName("okcoin");
     okcoinclientsource.setUrl("wss://real.okcoin.cn:10440/websocket/okcoinapi");
 
     OkcoinClient okclient = new OkcoinClient(okcoinclientsource);
     env.lifecycle().manage(new FManaged(okclient::start, okclient::stop));
-
 
     WebsocketSource btccClientsource = new WebsocketSource();
     btccClientsource.setName("btcc");

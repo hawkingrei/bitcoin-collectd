@@ -1,5 +1,4 @@
 server:
-  registerDefaultExceptionMappers: false
   maxThreads: 20
   applicationConnectors:
     - type: http
@@ -14,7 +13,9 @@ logging:
   level: INFO
 
 collectorDb:
-  driverClass: com.mysql.jdbc.Driver
-  user: root
-  url: jdbc:mysql://127.0.0.1:3306/collectd
+  host:     localhost
+  port:     27017
+  db:       collector
+  user:
+  password:
 
