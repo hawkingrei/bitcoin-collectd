@@ -5,7 +5,12 @@ machine:
     - mysql
 dependencies:
   pre:
-    - sudo service mongodb stop && curl -L -O https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && tar xvzf mongodb-linux-x86_64-ubuntu1204-3.0.2.tgz && sudo mv mongodb-linux-x86_64-ubuntu1204-3.0.2/bin/* /usr/bin/ && sudo service mongodb start
+    - sudo apt-get purge mongodb-org*
+    - sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+    - echo "deb http://repo.mongodb.org/apt/ubuntu precise/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+    - sudo apt-get update
+    - sudo apt-get install -y mongodb-org
+    - sudo service mongod restart
   override:
     - mongo collector  --eval 'db.addUser("admin", "admin");'
     - mvn package -DskipTests
