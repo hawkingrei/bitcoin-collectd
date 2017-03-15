@@ -10,7 +10,7 @@
         <guava.version>19.0</guava.version>
         <guice.version>4.1.0</guice.version>
         <jetty.version>9.3.9.v20160517</jetty.version>
-        <fastjson.version>1.2.24</fastjson.version>
+        <fastjson.version>1.2.28</fastjson.version>
         <slf4j.version>1.7.21</slf4j.version>
         <dropwizard.version>1.0.5</dropwizard.version>
         <quartz.version>2.2.1</quartz.version>
